@@ -389,7 +389,7 @@ function Index() {
 
       <main>
         {/* Hero */}
-        <section className="bg-[linear-gradient(to_right,rgba(255,255,255,0.97),rgba(255,255,255,0.85)_32%,rgba(255,255,255,0)_50%),url('/images/heromovers.webp')] bg-cover bg-center sm:min-h-[529px] lg:min-h-[635px]">
+        <section className="bg-[linear-gradient(to_right,rgba(255,255,255,0.8),rgba(255,255,255,0.6)_50%,rgba(255,255,255,0.45)_100%),url('/images/heromovers.webp')] bg-cover bg-center sm:bg-[linear-gradient(to_right,rgba(255,255,255,0.97),rgba(255,255,255,0.85)_32%,rgba(255,255,255,0)_50%),url('/images/heromovers.webp')] sm:min-h-[529px] lg:min-h-[635px]">
           <div className="mx-auto flex max-w-7xl items-center px-4 pt-24 pb-14 sm:min-h-[529px] sm:px-6 sm:pt-28 lg:min-h-[635px] lg:pt-32 lg:pb-20">
             <div className="max-w-2xl">
               <h1 className="font-display text-5xl leading-[1.05] font-extrabold text-foreground sm:text-6xl lg:text-7xl">
@@ -401,7 +401,7 @@ function Index() {
                 Trusted From Start to Finish.
               </p>
               <span aria-hidden="true" className="mt-2 block h-1 w-16 rounded-full bg-brand" />
-              <p className="mt-4 max-w-xl text-base text-foreground/75 sm:text-2xl">
+              <p className="mt-4 max-w-xl font-bold text-foreground sm:text-xl sm:text-foreground/75">
                 Professional Local Moving Services
                 <br />
                 in Philadelphia &amp; Surrounding Areas
