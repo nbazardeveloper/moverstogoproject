@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/carousel";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { MobileStickyCta } from "@/components/mobile-sticky-cta";
 import { faqs, site, testimonials } from "@/data/site";
 
 function GoogleIcon() {
@@ -381,25 +382,10 @@ function Index() {
   const [activePlatform, setActivePlatform] = useState<keyof typeof reviewsByPlatform>("google");
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen pb-20 sm:pb-0">
       <SiteHeader />
 
-      <div className="flex items-center justify-between gap-3 px-4 py-4 sm:hidden">
-        <a
-          href={site.phoneHref}
-          aria-label={`Call Movers To Go at ${site.phoneDisplay}`}
-          className="rounded-md text-base font-bold text-foreground transition-colors hover:text-brand active:scale-95 focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none"
-        >
-          {site.phoneDisplay}
-        </a>
-        <Link
-          to="/contact"
-          aria-label="Get a free moving quote"
-          className="inline-flex items-center justify-center rounded-lg bg-brand px-5 py-2.5 text-sm font-bold tracking-wide text-white uppercase shadow-md shadow-brand/30 transition-all hover:opacity-90 active:scale-95 focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:outline-none"
-        >
-          Get Quote
-        </Link>
-      </div>
+      <MobileStickyCta />
 
       <main>
         {/* Hero */}

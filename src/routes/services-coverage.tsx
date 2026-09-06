@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Boxes, Building2, Home, MapPin, Music, Route as RouteIcon } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { MobileStickyCta } from "@/components/mobile-sticky-cta";
 import { site } from "@/data/site";
 
 const title = "Moving Services & Service Areas in PA | Movers To Go";
@@ -82,8 +83,10 @@ const sections = [
 
 function ServicesCoverage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen pb-20 sm:pb-0">
       <SiteHeader />
+
+      <MobileStickyCta />
 
       <main>
         <section className="border-b border-border bg-surface">

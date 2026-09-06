@@ -18,6 +18,13 @@ import {
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { notifyQuoteRequest } from "@/lib/quote-notification";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { crewOptions, moveSizes, packingRates, site } from "@/data/site";
 
 type FormState = {
@@ -93,7 +100,7 @@ function FieldRow({
 }
 
 const inputClass =
-  "w-full bg-transparent text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none";
+  "w-full bg-transparent text-base sm:text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none";
 
 function formatMoveDate(value: string) {
   if (!value) return "date TBD";
@@ -202,80 +209,47 @@ export function QuoteForm() {
           <h2 className="font-display text-2xl font-extrabold tracking-wide uppercase">
             Basic Packing Includes
           </h2>
-          <div className="mt-5 overflow-x-auto">
-            <table
-              className="w-full min-w-[560px] border-separate"
-              style={{ borderSpacing: "0.75rem 0" }}
-            >
-              <caption className="sr-only">
-                Basic packing hourly rates by crew size, cash and card price
-              </caption>
-              <thead>
-                <tr>
-                  {packingRates.map((rate) => (
-                    <th
-                      key={rate.movers}
-                      scope="col"
-                      className={`rounded-t-lg border-2 border-b-0 p-4 text-center font-normal ${
-                        rate.movers === crewSize ? "border-brand bg-brand/5" : "border-border"
-                      }`}
-                    >
-                      <span className="mb-2 flex items-center justify-center gap-1 text-brand">
-                        {Array.from({ length: rate.movers }).map((_, i) => (
-                          <User key={i} className="h-4 w-4" />
-                        ))}
-                        <Truck aria-hidden className="ml-1 h-5 w-5" />
-                      </span>
-                      <span className="block text-xs font-extrabold tracking-wide text-foreground uppercase">
-                        {rate.movers} Mover{rate.movers > 1 ? "s" : ""} + Truck
-                      </span>
-                    </th>
+          <div className="mt-5 grid grid-cols-2 gap-3 lg:grid-cols-4">
+            {packingRates.map((rate) => (
+              <div
+                key={rate.movers}
+                className={`rounded-lg border-2 p-4 text-center transition-all ${
+                  rate.movers === crewSize ? "border-brand bg-brand/5 shadow-md" : "border-border"
+                }`}
+              >
+                <span className="mb-2 flex items-center justify-center gap-1 text-brand">
+                  {Array.from({ length: rate.movers }).map((_, i) => (
+                    <User key={i} className="h-4 w-4" />
                   ))}
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  {packingRates.map((rate) => (
-                    <td
-                      key={rate.movers}
-                      className={`border-x-2 border-t border-dashed p-4 text-center ${
-                        rate.movers === crewSize ? "border-brand bg-brand/5" : "border-border"
-                      }`}
-                    >
-                      <p className="text-[10px] font-bold tracking-wide text-foreground/60 uppercase">
-                        Cash Price
-                      </p>
-                      <p className="font-display text-2xl font-extrabold text-brand">
-                        ${rate.cash}
-                        <span className="text-sm font-bold">/hr</span>
-                      </p>
-                      <p className="text-[10px] text-foreground/50">when paying in cash</p>
-                    </td>
-                  ))}
-                </tr>
-                <tr>
-                  {packingRates.map((rate) => (
-                    <td
-                      key={rate.movers}
-                      className={`rounded-b-lg border-x-2 border-t border-b-2 border-dashed p-4 text-center ${
-                        rate.movers === crewSize
-                          ? "border-brand bg-brand/5 shadow-md"
-                          : "border-border"
-                      }`}
-                    >
-                      <p className="text-[10px] font-bold tracking-wide text-foreground/60 uppercase">
-                        Card Price
-                      </p>
-                      <p className="font-display text-lg font-extrabold">
-                        ${rate.card}
-                        <span className="text-xs font-bold">/hr</span>
-                      </p>
-                      <p className="text-[10px] text-foreground/50">when paying by card</p>
-                    </td>
-                  ))}
-                </tr>
-              </tbody>
-            </table>
+                  <Truck aria-hidden className="ml-1 h-5 w-5" />
+                </span>
+                <p className="text-xs font-extrabold tracking-wide uppercase">
+                  {rate.movers} Mover{rate.movers > 1 ? "s" : ""} + Truck
+                </p>
+
+                <div className="mt-3 border-t border-border pt-3">
+                  <p className="text-[10px] font-bold tracking-wide text-foreground/60 uppercase">
+                    Cash Price
+                  </p>
+                  <p className="font-display text-2xl font-extrabold text-brand">
+                    ${rate.cash}
+                    <span className="text-sm font-bold">/hr</span>
+                  </p>
+                  <p className="text-[10px] text-foreground/50">when paying in cash</p>
+                </div>
+
+                <div className="mt-3 border-t border-border pt-3">
+                  <p className="text-[10px] font-bold tracking-wide text-foreground/60 uppercase">
+                    Card Price
+                  </p>
+                  <p className="font-display text-lg font-extrabold">
+                    ${rate.card}
+                    <span className="text-xs font-bold">/hr</span>
+                  </p>
+                  <p className="text-[10px] text-foreground/50">when paying by card</p>
+                </div>
+              </div>
+            ))}
           </div>
           <p className="mt-3 text-xs text-foreground/70">
             Cash price is available when paying in cash on the day of your move.
@@ -568,22 +542,23 @@ export function QuoteForm() {
           </FieldRow>
 
           <FieldRow icon={Package} label="Move Size" htmlFor="move_size" error={errors.move_size}>
-            <select
-              id="move_size"
-              name="move_size"
-              required
-              aria-required="true"
-              value={form.move_size}
-              onChange={(e) => update("move_size", e.target.value)}
-              className={`${inputClass} cursor-pointer`}
-            >
-              <option value="">Select move size</option>
-              {moveSizes.map((size) => (
-                <option key={size} value={size}>
-                  {size}
-                </option>
-              ))}
-            </select>
+            <Select value={form.move_size} onValueChange={(value) => update("move_size", value)}>
+              <SelectTrigger
+                id="move_size"
+                aria-label="Move size"
+                aria-required="true"
+                className="h-auto w-full border-0 bg-transparent p-0 text-base text-foreground shadow-none focus:ring-0 sm:text-sm"
+              >
+                <SelectValue placeholder="Select move size" />
+              </SelectTrigger>
+              <SelectContent>
+                {moveSizes.map((size) => (
+                  <SelectItem key={size} value={size}>
+                    {size}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </FieldRow>
         </div>
 
