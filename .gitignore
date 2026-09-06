@@ -20,6 +20,8 @@ dist-ssr
 .env
 .env.*
 !.env.example
+# Public Supabase URL/publishable key only — safe to commit, needed at build time
+!.env.production
 
 # Wrangler / Cloudflare
 .wrangler/
