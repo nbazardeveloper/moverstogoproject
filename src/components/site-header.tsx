@@ -22,8 +22,8 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 px-3 pt-3 sm:px-4 sm:pt-4">
-      <div className="mx-auto max-w-7xl bg-neutral-800 px-4 shadow-lg sm:px-6">
+    <header className="sticky top-0 z-50 bg-background shadow-lg">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 xl:grid-cols-[auto_1fr_auto]">
           <Link
             to="/"
@@ -31,7 +31,7 @@ export function SiteHeader() {
             className="flex min-w-0 items-center py-4 focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none sm:py-5"
           >
             <img
-              src="/images/logo.webp"
+              src="/images/logo1.webp"
               alt="Movers To Go"
               className="h-11 w-auto shrink-0 sm:h-12 lg:h-14"
             />
@@ -43,7 +43,7 @@ export function SiteHeader() {
                 key={link.label}
                 to={link.to}
                 hash={link.hash}
-                className="rounded-md text-base font-bold tracking-wide text-white uppercase transition-colors hover:text-brand focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none"
+                className="rounded-md text-base font-bold tracking-wide text-foreground uppercase transition-colors hover:text-brand focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none"
               >
                 {link.label}
               </Link>
@@ -54,7 +54,7 @@ export function SiteHeader() {
             <a
               href={site.phoneHref}
               aria-label={`Call Movers To Go at ${site.phoneDisplay}`}
-              className="hidden items-center gap-2 rounded-md px-2 py-2 text-base font-semibold text-white transition-colors hover:text-brand focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none sm:inline-flex"
+              className="hidden items-center gap-2 rounded-md px-2 py-2 text-base font-semibold text-foreground transition-colors hover:text-brand focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none sm:inline-flex"
             >
               <Smartphone aria-hidden="true" className="h-4 w-4" />
               {site.phoneDisplay}
@@ -70,7 +70,7 @@ export function SiteHeader() {
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger
                 aria-label="Open menu"
-                className="inline-flex h-10 w-10 items-center justify-center text-white transition-colors hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none xl:hidden"
+                className="inline-flex h-10 w-10 items-center justify-center text-foreground transition-colors hover:bg-surface focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none xl:hidden"
               >
                 <Menu aria-hidden="true" className="h-5 w-5" />
               </SheetTrigger>

@@ -389,23 +389,51 @@ function Index() {
 
       <main>
         {/* Hero */}
-        <section className="-mt-[90px] bg-[linear-gradient(to_right,rgba(255,255,255,0.97),rgba(255,255,255,0.85)_45%,rgba(255,255,255,0)_70%),url('/images/heromovers.webp')] bg-cover bg-center sm:-mt-[104px] sm:min-h-[529px] lg:-mt-[114px] lg:min-h-[635px]">
-          <div className="mx-auto flex max-w-7xl items-center px-4 pt-[146px] pb-14 sm:min-h-[529px] sm:px-6 sm:pt-[160px] lg:min-h-[635px] lg:pt-[194px] lg:pb-20">
+        <section className="bg-[linear-gradient(to_right,rgba(255,255,255,0.97),rgba(255,255,255,0.85)_32%,rgba(255,255,255,0)_50%),url('/images/heromovers.webp')] bg-cover bg-center sm:min-h-[529px] lg:min-h-[635px]">
+          <div className="mx-auto flex max-w-7xl items-center px-4 pt-24 pb-14 sm:min-h-[529px] sm:px-6 sm:pt-28 lg:min-h-[635px] lg:pt-32 lg:pb-20">
             <div className="max-w-2xl">
               <h1 className="font-display text-5xl leading-[1.05] font-extrabold text-foreground sm:text-6xl lg:text-7xl">
-                Top-Rated
+                Philadelphia
                 <br />
                 <span className="text-brand">Local Movers</span>
-                <br />
-                in Philadelphia, PA
               </h1>
-              <p className="mt-5 max-w-xl text-xl font-semibold text-foreground/75 sm:text-2xl">
-                10+ years of stress-free local moving across Philadelphia and the surrounding
-                suburbs. Professional packing, transparent estimates, and careful handling
-                guaranteed.
+              <p className="mt-4 text-xl font-bold text-foreground sm:text-3xl">
+                Trusted From Start to Finish.
+              </p>
+              <span aria-hidden="true" className="mt-2 block h-1 w-16 rounded-full bg-brand" />
+              <p className="mt-4 max-w-xl text-base text-foreground/75 sm:text-2xl">
+                Professional Local Moving Services
+                <br />
+                in Philadelphia &amp; Surrounding Areas
               </p>
 
-              <div className="mt-6 flex flex-wrap items-center gap-3">
+              <div className="mt-9">
+                <Link
+                  to="/contact"
+                  aria-label="Get your free moving quote"
+                  className="group animate-cta-pulse inline-flex items-center justify-center gap-2 rounded-lg bg-brand px-8 py-4 text-base font-bold tracking-wide text-white uppercase shadow-md shadow-brand/30 transition-all hover:scale-[1.04] hover:animate-none hover:opacity-90 active:scale-95 focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:outline-none"
+                >
+                  Check Your Rate
+                  <ArrowRight
+                    aria-hidden="true"
+                    className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                  />
+                </Link>
+
+                <a
+                  href={site.phoneHref}
+                  aria-label={`Call Movers To Go at ${site.phoneDisplay}`}
+                  className="mt-6 hidden w-fit items-center justify-center gap-2 text-base font-bold text-foreground transition-opacity hover:opacity-80 active:scale-95 focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none sm:flex"
+                >
+                  <Smartphone aria-hidden="true" className="h-4 w-4 text-brand" />
+                  <span className="tracking-wide text-brand uppercase">
+                    Or give us a call:
+                  </span>{" "}
+                  {site.phoneDisplay}
+                </a>
+              </div>
+
+              <div className="mt-10 mb-16 flex flex-wrap items-center gap-3 sm:mb-20">
                 {reviewPlatforms.map((platform) => (
                   <a
                     key={platform.name}
@@ -442,40 +470,14 @@ function Index() {
                   </a>
                 ))}
               </div>
-
-              <div className="mt-8 mb-16 flex flex-wrap items-center gap-x-6 gap-y-3 sm:mb-20">
-                <Link
-                  to="/contact"
-                  aria-label="Get your free moving quote"
-                  className="group animate-cta-pulse inline-flex items-center justify-center gap-2 rounded-lg bg-brand px-8 py-4 text-base font-bold tracking-wide text-white uppercase shadow-md shadow-brand/30 transition-all hover:scale-[1.04] hover:animate-none hover:opacity-90 active:scale-95 focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:outline-none"
-                >
-                  Get My Quote
-                  <ArrowRight
-                    aria-hidden="true"
-                    className="h-4 w-4 transition-transform group-hover:translate-x-1"
-                  />
-                </Link>
-
-                <a
-                  href={site.phoneHref}
-                  aria-label={`Call Movers To Go at ${site.phoneDisplay}`}
-                  className="hidden items-center justify-center gap-2 text-base font-bold text-foreground transition-opacity hover:opacity-80 active:scale-95 focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none sm:inline-flex"
-                >
-                  <Smartphone aria-hidden="true" className="h-4 w-4 text-brand" />
-                  <span className="tracking-wide text-brand uppercase">
-                    Or give us a call:
-                  </span>{" "}
-                  {site.phoneDisplay}
-                </a>
-              </div>
             </div>
           </div>
         </section>
 
-        {/* Trust bar — a separate layer straddling the hero/trust-bar boundary, like the floating header */}
-        <section className="relative bg-surface pt-10 pb-6 sm:pt-24 lg:pt-28 lg:pb-8">
-          <div className="px-4 sm:absolute sm:inset-x-0 sm:top-0 sm:z-10 sm:-translate-y-1/2 sm:px-6">
-            <div className="mx-auto max-w-7xl border border-border bg-background px-6 py-10 shadow-2xl sm:px-10 lg:py-12">
+        {/* Trust bar */}
+        <section className="bg-surface pb-10 sm:pb-14 lg:pb-16">
+          <div className="px-4 sm:px-6">
+            <div className="mx-auto max-w-7xl border border-border bg-background px-6 py-10 sm:px-10 lg:py-12">
               <div className="grid grid-cols-1 gap-8 divide-y divide-border sm:grid-cols-2 sm:gap-x-10 sm:gap-y-10 sm:divide-y-0 lg:grid-cols-5">
                 {trustPoints.map((point, index) => (
                   <div
