@@ -5,13 +5,54 @@ import { site } from "@/data/site";
 export function SiteFooter() {
   return (
     <footer className="border-t-2 border-brand bg-neutral-800">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-3">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-2 lg:grid-cols-4">
         <div>
           <img src="/images/logo.webp" alt="Movers To Go" className="h-9 w-auto" />
           <p className="mt-3 max-w-xs text-base text-neutral-300">
-            Licensed and insured Philadelphia movers with 10+ years of local, long-distance, and
-            commercial relocation experience.
+            Philadelphia Local Moving Company
           </p>
+        </div>
+
+        <div>
+          <h2 className="font-display text-sm font-bold tracking-wide text-white uppercase">
+            Navigation
+          </h2>
+          <ul className="mt-4 space-y-3 text-base">
+            <li>
+              <Link
+                to="/"
+                className="rounded-md text-neutral-300 hover:text-brand focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none"
+              >
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/"
+                hash="services"
+                className="rounded-md text-neutral-300 hover:text-brand focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none"
+              >
+                Services
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/"
+                hash="service-area"
+                className="rounded-md text-neutral-300 hover:text-brand focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none"
+              >
+                Service Areas
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/contact"
+                className="rounded-md text-neutral-300 hover:text-brand focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none"
+              >
+                Check Your Rate
+              </Link>
+            </li>
+          </ul>
         </div>
 
         <div>

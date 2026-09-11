@@ -21,14 +21,7 @@ export const site = {
     opens: "08:00",
     closes: "20:00",
   },
-  areas: [
-    "Philadelphia",
-    "Greater Philadelphia",
-    "Bucks County",
-    "Montgomery County",
-    "Allentown",
-    "Lehigh Valley",
-  ],
+  areas: ["Philadelphia", "Huntingdon Valley", "Montgomery County", "Bucks County"],
 };
 
 export const moveTypes = [
@@ -61,44 +54,24 @@ export const packingRates = [
 
 export const faqs = [
   {
-    q: "Do you provide local moving services in Philadelphia and surrounding areas?",
-    a: "Yes. Movers To Go handles local moves throughout Philadelphia, Greater Philadelphia, Bucks County, Montgomery County, Allentown, the Lehigh Valley, and nearby Pennsylvania communities.",
+    q: "Do you provide local moving services in Philadelphia?",
+    a: "Yes. Movers To Go provides local moving services throughout Philadelphia, Huntingdon Valley, and surrounding areas in Montgomery and Bucks Counties.",
   },
   {
-    q: "What types of moves do you handle?",
-    a: "We handle local residential moves, long-distance and interstate relocations, apartment and condo moves, commercial and office relocations, packing-only jobs, and specialty items such as pianos and antiques.",
+    q: "How much do movers cost in Philadelphia?",
+    a: "Moving costs depend on the size of your move, the number of movers needed, and other details of the job. Use our Check Your Rate option to enter your move details and view the available rates.",
   },
   {
-    q: "Do you offer packing and unpacking services?",
-    a: "Yes. We offer full-service packing, partial packing, unpacking, and furniture disassembly and reassembly using professional-grade materials and protective wrapping.",
+    q: "Do you move apartments and houses?",
+    a: "Yes. We handle apartment, house, condo, and other residential moves throughout the Philadelphia area.",
   },
   {
-    q: "How can I get an accurate moving quote?",
-    a: "Submit the free quote form or call +1 (445) 444-8100. Share your move date, home size, and both addresses, and a move coordinator responds within about 15 minutes with a transparent estimate.",
+    q: "Do you offer packing services?",
+    a: "Yes. Our team can help pack and protect furniture, household items, and other belongings for your move.",
   },
   {
-    q: "Do you move apartments, houses, and condos?",
-    a: "Yes. Our crews are experienced with walk-up apartments, high-rise condos with elevator reservations and COI requirements, townhomes, and single-family houses of every size.",
-  },
-  {
-    q: "Do you provide commercial and office moving services?",
-    a: "Yes. We relocate offices, retail spaces, and small warehouses with after-hours and weekend scheduling, labeled inventory, and IT and workstation setup to limit downtime.",
-  },
-  {
-    q: "Do you offer piano and specialty moving?",
-    a: "Yes. We move upright and baby grand pianos, safes, gym equipment, fine art, and antiques using dedicated equipment, custom crating, and trained specialty crews.",
-  },
-  {
-    q: "What areas does Movers To Go serve?",
-    a: "We serve Philadelphia, Greater Philadelphia, Bucks County, Montgomery County, Allentown, the Lehigh Valley, and surrounding Pennsylvania areas, plus long-distance moves nationwide.",
-  },
-  {
-    q: "How far in advance should I book my move?",
-    a: "Two to four weeks ahead is ideal, and four to six weeks for summer weekends and month-end dates. We also accommodate short-notice and same-week moves when crews are available.",
-  },
-  {
-    q: "Why choose Movers To Go?",
-    a: "More than 10 years of experience, a 4.9-star Google rating from 100+ reviews, licensed and insured crews, transparent upfront pricing, and careful handling on every single move.",
+    q: "How do I get a moving rate?",
+    a: "Click Check Your Rate, enter the details of your move, and continue to view the available pricing options.",
   },
 ];
 

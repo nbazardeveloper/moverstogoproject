@@ -34,17 +34,30 @@ function Contact() {
       <SiteHeader />
 
       <main>
-        <section className="bg-surface">
-          <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 lg:py-20">
-            <h1 className="font-display text-5xl leading-[1.05] font-extrabold sm:text-6xl">
-              Get Your <span className="text-brand">Free Moving Quote</span>
-            </h1>
-            <p className="mt-5 text-base text-foreground sm:text-lg">
-              Tell us about your move and a coordinator will get back to you within about 15
-              minutes, or call us directly.
-            </p>
+        <section className="relative isolate overflow-hidden bg-surface sm:bg-[linear-gradient(to_right,rgba(255,255,255,0.9),rgba(255,255,255,0.5)_40%,rgba(255,255,255,0.2)_100%),url('/images/herocontact.webp')] sm:bg-cover sm:bg-fixed sm:bg-right">
+          <div
+            aria-hidden="true"
+            className="absolute inset-x-0 bottom-0 h-[480px] bg-[linear-gradient(to_bottom,rgba(255,255,255,1)_0%,rgba(255,255,255,0.25)_25%,rgba(255,255,255,0.1)_100%),url('/images/herocaontactmobil.webp')] bg-cover bg-bottom sm:hidden"
+          />
 
-            <div className="mt-10">
+          <div className="relative mx-auto max-w-2xl px-4 py-16 sm:px-6 lg:py-20">
+            <div className="text-center">
+              <h1 className="font-display text-5xl leading-[1.05] font-extrabold sm:text-6xl">
+                Get Your
+                <br />
+                <span className="text-brand">Move Quote</span>
+              </h1>
+              <span
+                aria-hidden="true"
+                className="mx-auto mt-3 block h-1 w-16 rounded-full bg-brand"
+              />
+              <p className="mt-5 text-base text-foreground sm:text-lg">
+                To get your free quote with a guaranteed hourly rate, please fill out the form
+                below.
+              </p>
+            </div>
+
+            <div className="mt-10 text-left">
               <QuoteForm />
             </div>
           </div>

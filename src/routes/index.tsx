@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Smartphone, Star } from "lucide-react";
 import {
@@ -42,46 +42,6 @@ function GoogleIcon() {
   );
 }
 
-function AnimatedStat({ value, className }: { value: string; className: string }) {
-  const [display, setDisplay] = useState("0");
-  const ref = useRef<HTMLParagraphElement>(null);
-  const started = useRef(false);
-
-  useEffect(() => {
-    const match = value.match(/^([\d.]+)(.*)$/);
-    if (!match) return;
-    const [, numStr, suffix] = match;
-    const target = parseFloat(numStr);
-    const decimals = numStr.includes(".") ? numStr.split(".")[1].length : 0;
-    const node = ref.current;
-    if (!node) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting || started.current) return;
-        started.current = true;
-        const duration = 1500;
-        const startTime = performance.now();
-        const step = (now: number) => {
-          const progress = Math.min((now - startTime) / duration, 1);
-          setDisplay((target * progress).toFixed(decimals) + suffix);
-          if (progress < 1) requestAnimationFrame(step);
-        };
-        requestAnimationFrame(step);
-      },
-      { threshold: 0.4 },
-    );
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, [value]);
-
-  return (
-    <p ref={ref} className={className}>
-      {display}
-    </p>
-  );
-}
-
 const title = "Movers To Go | Local Movers in Philadelphia, PA";
 const description =
   "Licensed Philadelphia movers with 10+ years' experience and a 4.9-star rating. Local, long-distance, commercial & packing services. Free quote in 15 minutes.";
@@ -117,43 +77,43 @@ export const Route = createFileRoute("/")({
 });
 
 const trustPoints = [
-  { title: "Local Philadelphia Experts" },
+  { title: "Philadelphia Local Experts" },
   { title: "Licensed & Insured" },
-  { title: "Careful With Your Belongings" },
+  { title: "Careful Handling" },
   { title: "On-Time & Reliable" },
-  { title: "No Hidden Fees" },
+  { title: "Straightforward Pricing" },
 ];
 
 const services = [
   {
     iconSrc: "/images/icons/local-moving-icon.png",
-    title: "Local Philadelphia Moving",
-    body: "Same-day and next-day moves across the city with crews who know every neighborhood. From a walk-up in Fishtown to a high-rise in Center City, we handle the logistics, parking, and building rules so your local move stays on schedule.",
-  },
-  {
-    iconSrc: "/images/icons/long-distance-moving-icon.png",
-    title: "Long-Distance & Interstate",
-    body: "Direct routes, tracked timelines, and one dedicated crew from pickup to delivery, nationwide. No warehouse transfers or subcontracted trucks, just a single team that loads your home and delivers it, with proactive updates the whole way.",
+    title: "Local Moving",
+    body: "Reliable local moving services throughout Philadelphia and surrounding areas. Our team handles your move with care, efficiency, and attention to detail from pickup to delivery.",
   },
   {
     iconSrc: "/images/icons/residential-moving-icon.png",
-    title: "Residential & Apartment",
-    body: "Walk-ups, high-rises, condos, and houses handled with elevator reservations and COI coordination. We wrap furniture, protect floors and doorways, and communicate with your building management so move day goes smoothly.",
+    title: "Residential Moving",
+    body: "Moving to a new home? We help with house, condo, and residential moves throughout the Philadelphia area, with careful handling of your furniture and belongings every step of the way.",
+  },
+  {
+    iconSrc: "/images/icons/residential-moving-icon.png",
+    title: "Apartment Moving",
+    body: "From walk-ups to high-rise apartments, our Philadelphia movers are prepared for stairs, elevators, tight spaces, and the challenges that come with city moving.",
   },
   {
     iconSrc: "/images/icons/commercial-office-moving-icon.png",
-    title: "Commercial & Office",
-    body: "After-hours and weekend office relocations with labeled inventory and floor-plan placement, so your team is back at their desks with minimal downtime. We handle workstations, IT equipment, and furniture reassembly on arrival.",
+    title: "Commercial & Office Moving",
+    body: "Dependable moving services for offices and businesses throughout Philadelphia and surrounding areas, with efficient planning to help keep your move organized and minimize disruption.",
   },
   {
     iconSrc: "/images/icons/packing-unpacking-icon.png",
-    title: "Packing & Unpacking",
-    body: "Full-service or partial packing with professional-grade materials, dish barrels, and wardrobe boxes. We can also unpack, remove debris, and handle furniture disassembly and reassembly so you can settle in faster.",
+    title: "Packing Services",
+    body: "Need help getting ready for moving day? Our team can help pack and protect your belongings, furniture, and household items for a safer, more organized move.",
   },
   {
-    iconSrc: "/images/icons/specialty-moving-icon.png",
-    title: "Specialty Moving",
-    body: "Pianos, fine art, safes, gym equipment, and antiques moved with custom crating and trained specialty crews. We plan for stairs, narrow doorways, and hoisting so your most delicate and valuable items arrive safely.",
+    iconSrc: "/images/icons/long-distance-moving-icon.png",
+    title: "Long-Distance Moving",
+    body: "Planning a move beyond the Philadelphia area? Contact Movers To Go to discuss your long-distance move and get a moving estimate based on your specific needs.",
   },
 ];
 
@@ -261,58 +221,11 @@ const reviewTabs: {
   },
 ];
 
-const stats = [
-  { value: "10K+", label: "Customer moves" },
-  { value: "4.9★", label: "Average customer rating" },
-  { value: "100%", label: "Employee background checks" },
-];
-
-const serviceAreaGroups = [
-  {
-    region: "Philadelphia",
-    towns: [
-      "Center City",
-      "Fishtown",
-      "Fairmount",
-      "Northern Liberties",
-      "South Philadelphia",
-      "University City",
-      "Manayunk",
-      "West Philadelphia",
-    ],
-  },
-  {
-    region: "Greater Philadelphia",
-    towns: [
-      "Ardmore",
-      "Bala Cynwyd",
-      "Havertown",
-      "Upper Darby",
-      "Media",
-      "Springfield",
-      "Drexel Hill",
-    ],
-  },
-  {
-    region: "Bucks County",
-    towns: ["Doylestown", "Newtown", "Bensalem", "Levittown", "Warminster", "Yardley", "Langhorne"],
-  },
-  {
-    region: "Montgomery County",
-    towns: [
-      "King of Prussia",
-      "Norristown",
-      "Lansdale",
-      "Pottstown",
-      "Ambler",
-      "Conshohocken",
-      "Willow Grove",
-    ],
-  },
-  {
-    region: "Lehigh Valley",
-    towns: ["Allentown", "Bethlehem", "Easton", "Emmaus", "Whitehall", "Nazareth"],
-  },
+const serviceAreaCards = [
+  { name: "Philadelphia", subtitle: "Local Moving Services" },
+  { name: "Huntingdon Valley", subtitle: "Local Moving Services" },
+  { name: "Montgomery County", subtitle: "Local Moving Services" },
+  { name: "Bucks County", subtitle: "Local Moving Services" },
 ];
 
 const galleryPhotos = [
@@ -392,16 +305,16 @@ function Index() {
         <section className="bg-[linear-gradient(to_right,rgba(255,255,255,0.8),rgba(255,255,255,0.6)_50%,rgba(255,255,255,0.45)_100%),url('/images/heromovers.webp')] bg-cover bg-center sm:bg-[linear-gradient(to_right,rgba(255,255,255,0.97),rgba(255,255,255,0.85)_32%,rgba(255,255,255,0)_50%),url('/images/heromovers.webp')] sm:min-h-[529px] lg:min-h-[635px]">
           <div className="mx-auto flex max-w-7xl items-center px-4 pt-24 pb-14 sm:min-h-[529px] sm:px-6 sm:pt-28 lg:min-h-[635px] lg:pt-32 lg:pb-20">
             <div className="max-w-2xl">
-              <h1 className="font-display text-5xl leading-[1.05] font-extrabold text-foreground sm:text-6xl lg:text-7xl">
+              <h1 className="font-display text-6xl leading-[1.05] font-extrabold text-foreground sm:text-6xl lg:text-7xl">
                 Philadelphia
                 <br />
                 <span className="text-brand">Local Movers</span>
               </h1>
-              <p className="mt-4 text-xl font-bold text-foreground sm:text-3xl">
+              <p className="mt-4 text-2xl font-extrabold text-foreground sm:text-3xl">
                 Trusted From Start to Finish.
               </p>
               <span aria-hidden="true" className="mt-2 block h-1 w-16 rounded-full bg-brand" />
-              <p className="mt-4 max-w-xl font-bold text-foreground sm:text-xl sm:text-foreground/75">
+              <p className="mt-4 max-w-xl text-lg font-bold text-foreground sm:text-xl sm:text-foreground/75">
                 Professional Local Moving Services
                 <br />
                 in Philadelphia &amp; Surrounding Areas
@@ -497,17 +410,20 @@ function Index() {
 
         {/* Why Movers To Go */}
         <section id="why-movers-to-go" className="scroll-mt-24 border-b border-border bg-surface">
-          <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 py-16 sm:px-6 lg:grid-cols-3 lg:py-24">
+          <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:py-24">
             <div>
               <h2 className="section-heading">
-                Why <span className="text-brand">Movers To Go</span>
+                Why Choose <span className="text-brand">Movers To Go</span>?
               </h2>
               <p className="mt-4 text-lg text-foreground">
-                Movers To Go was built on a simple idea: moving should be easy, organized, and
-                handled with care. For 10+ years we&rsquo;ve brought that approach to every local
-                and long-distance move across Philadelphia and surrounding Pennsylvania communities,
-                with the professional service, careful handling, and personal attention that earned
-                us a 4.9-star Google rating from 100+ customers.
+                Movers To Go is a trusted Philadelphia moving company providing reliable local
+                moving services throughout Philadelphia and surrounding areas. Our experienced
+                movers handle every move with care, efficiency, and attention to detail.
+              </p>
+              <p className="mt-4 text-lg text-foreground">
+                From apartments and houses to offices and commercial spaces, we make moving simple
+                with straightforward pricing, dependable service, and a team you can count on from
+                start to finish.
               </p>
             </div>
 
@@ -518,18 +434,6 @@ function Index() {
                 className="h-80 w-full object-cover lg:h-[28rem]"
               />
             </div>
-
-            <div className="space-y-4">
-              {stats.map((stat) => (
-                <div key={stat.label} className="border-l-8 border-brand py-1 pl-6">
-                  <AnimatedStat
-                    value={stat.value}
-                    className="font-display text-7xl leading-none font-extrabold text-brand sm:text-8xl"
-                  />
-                  <p className="mt-3 text-lg text-foreground">{stat.label}</p>
-                </div>
-              ))}
-            </div>
           </div>
         </section>
 
@@ -538,10 +442,11 @@ function Index() {
           <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-24">
             <div>
               <h2 className="section-heading">
-                Moving services built for <span className="text-brand">every move</span>
+                Moving Services in <span className="text-brand">Philadelphia</span>
               </h2>
               <p className="mt-3 max-w-2xl text-foreground">
-                From a one-bedroom in Fishtown to a full office in Bucks County.
+                Reliable moving services for homes, apartments, and businesses throughout
+                Philadelphia and surrounding areas.
               </p>
             </div>
 
@@ -632,11 +537,27 @@ function Index() {
         <section id="reviews" className="scroll-mt-24 border-b border-border bg-surface">
           <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-24">
             <h2 className="section-heading">
-              What our <span className="text-brand">customers</span> are saying
+              Trusted by <span className="text-brand">Philadelphia Customers</span>
             </h2>
             <p className="mt-4 max-w-2xl text-foreground">
-              Real reviews from real moves, straight from Google, Yelp, and HomeAdvisor.
+              See what our customers say about moving with Movers To Go.
             </p>
+
+            <a
+              href="https://maps.app.goo.gl/sgnmWFQ6zaYtbdRo6"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Read Movers To Go reviews on Google"
+              className="mt-6 inline-flex items-center gap-2 rounded-lg bg-brand px-6 py-3 text-sm font-bold tracking-wide text-white uppercase shadow-md shadow-brand/30 transition-all hover:opacity-90 active:scale-95 focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:outline-none"
+            >
+              <span
+                aria-hidden="true"
+                className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-white"
+              >
+                <GoogleIcon />
+              </span>
+              Read Our Google Reviews
+            </a>
 
             <div className="mt-8 flex flex-wrap gap-3">
               {reviewTabs.map((tab) => (
@@ -723,14 +644,12 @@ function Index() {
         <section id="service-area" className="scroll-mt-24 border-b border-border">
           <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-24">
             <h2 className="section-heading">
-              <span className="text-brand">Local Movers</span> Near You in Philadelphia &amp;
-              Surrounding PA
+              Local Movers Serving <span className="text-brand">Philadelphia</span> &amp;
+              Surrounding Areas
             </h2>
             <p className="mt-4 max-w-3xl text-lg text-foreground">
-              From Bucks County and Montgomery County to Center City and the Lehigh Valley, our
-              experienced moving team is always nearby and ready to help. As one of the most trusted
-              moving companies in the Philadelphia area, Movers To Go is just a call away when you
-              need reliable local movers near you.
+              Movers To Go provides reliable local moving services throughout Philadelphia,
+              Huntingdon Valley, and nearby communities across Montgomery and Bucks Counties.
             </p>
 
             <a
@@ -742,19 +661,14 @@ function Index() {
               Call Us: {site.phoneDisplay}
             </a>
 
-            <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
-              {serviceAreaGroups.map((group) => (
-                <div key={group.region}>
-                  <h3 className="font-display text-sm font-extrabold tracking-wide text-brand uppercase">
-                    {group.region}
-                  </h3>
-                  <ul className="mt-3 space-y-2">
-                    {group.towns.map((town) => (
-                      <li key={town} className="text-base text-foreground">
-                        {town}
-                      </li>
-                    ))}
-                  </ul>
+            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {serviceAreaCards.map((area) => (
+                <div
+                  key={area.name}
+                  className="rounded-2xl border border-border bg-background p-6 text-center shadow-sm transition-all hover:-translate-y-1 hover:border-brand hover:shadow-lg"
+                >
+                  <h3 className="font-display text-xl font-extrabold">{area.name}</h3>
+                  <p className="mt-2 text-base text-foreground">{area.subtitle}</p>
                 </div>
               ))}
             </div>
@@ -784,7 +698,7 @@ function Index() {
 
             <div>
               <h2 className="font-display text-4xl font-extrabold sm:text-5xl">
-                Frequently asked <span className="text-brand">questions</span>
+                Frequently Asked <span className="text-brand">Questions</span>
               </h2>
               <p className="mt-3 text-foreground">
                 Everything Philadelphia customers ask before booking a move.
@@ -813,19 +727,18 @@ function Index() {
         <section className="bg-neutral-800 py-16 sm:py-20">
           <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
             <h2 className="font-display text-4xl font-extrabold text-white sm:text-5xl">
-              Ready to make your move <span className="text-brand">stress-free</span>?
+              Ready to <span className="text-brand">Make Your Move</span>?
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-lg text-white/80">
-              Get a free, no-obligation quote in about 15 minutes. Call now or request an estimate
-              online.
+              Tell us about your move and check your rates in just a few simple steps.
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
               <Link
                 to="/contact"
-                aria-label="Get a free moving quote"
+                aria-label="Check your moving rate"
                 className="inline-flex items-center justify-center rounded-lg bg-brand px-8 py-4 text-base font-bold tracking-wide text-white uppercase shadow-md shadow-brand/30 transition-all hover:opacity-90 active:scale-95 focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-800 focus-visible:outline-none"
               >
-                Get Your Free Quote
+                Check Your Rate
               </Link>
               <a
                 href={site.phoneHref}
@@ -833,7 +746,7 @@ function Index() {
                 className="inline-flex items-center gap-2 text-base font-bold text-white transition-colors hover:text-brand"
               >
                 <Smartphone aria-hidden="true" className="h-4 w-4" />
-                {site.phoneDisplay}
+                Call Now
               </a>
             </div>
           </div>
