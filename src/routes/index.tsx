@@ -849,13 +849,7 @@ function Index() {
         </section>
 
         {/* Final CTA */}
-        <section className="relative overflow-hidden bg-neutral-800 py-16 sm:py-20">
-          <img
-            src="/images/dot-blob.svg"
-            alt=""
-            aria-hidden="true"
-            className="pointer-events-none absolute top-1/2 left-1/2 z-0 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 select-none opacity-60 sm:h-[520px] sm:w-[520px]"
-          />
+        <section className="relative overflow-hidden bg-[#011936] py-16 sm:py-20">
           <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6">
             <h2 className="font-display text-4xl font-extrabold text-white sm:text-5xl">
               Ready to Make Your Move?
@@ -867,7 +861,7 @@ function Index() {
               <Link
                 to="/contact"
                 aria-label="Check your moving rate"
-                className="inline-flex items-center justify-center rounded-lg bg-brand px-8 py-4 text-base font-bold tracking-wide text-white uppercase shadow-md shadow-brand/30 transition-all hover:opacity-90 active:scale-95 focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-800 focus-visible:outline-none"
+                className="inline-flex items-center justify-center rounded-lg bg-brand px-8 py-4 text-base font-bold tracking-wide text-white uppercase shadow-md shadow-brand/30 transition-all hover:opacity-90 active:scale-95 focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-[#011936] focus-visible:outline-none"
               >
                 Check Your Rate
               </Link>

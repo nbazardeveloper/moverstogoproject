@@ -4,7 +4,7 @@ import { site } from "@/data/site";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t-2 border-brand bg-neutral-800">
+    <footer className="border-t-2 border-brand bg-[#011936]">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-2 lg:grid-cols-4">
         <div>
           <img src="/images/logo.webp" alt="Movers To Go" className="h-9 w-auto" />
