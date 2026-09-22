@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Smartphone, Star } from "lucide-react";
+import { ArrowRight, Check, Smartphone, Star } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -19,9 +19,9 @@ import { SiteFooter } from "@/components/site-footer";
 import { MobileStickyCta } from "@/components/mobile-sticky-cta";
 import { faqs, site, testimonials } from "@/data/site";
 
-function GoogleIcon() {
+function GoogleIcon({ className = "h-6 w-6" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 48 48" className="h-6 w-6" aria-hidden="true">
+    <svg viewBox="0 0 48 48" className={className} aria-hidden="true">
       <path
         fill="#4285F4"
         d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"
@@ -37,6 +37,34 @@ function GoogleIcon() {
       <path
         fill="#EA4335"
         d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"
+      />
+    </svg>
+  );
+}
+
+function GoogleWordmark({ className = "h-8" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 272 92" className={className} aria-hidden="true">
+      <path
+        fill="#4285F4"
+        d="M115.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18C71.25 34.32 81.24 25 93.5 25s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44S80.99 39.2 80.99 47.18c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z"
+      />
+      <path
+        fill="#EA4335"
+        d="M163.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18c0-12.85 9.99-22.18 22.25-22.18s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44s-12.51 5.46-12.51 13.44c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z"
+      />
+      <path
+        fill="#4285F4"
+        d="M209.75 26.34v39.82c0 16.38-9.66 23.07-21.08 23.07-10.75 0-17.22-7.19-19.66-13.07l8.48-3.53c1.51 3.61 5.21 7.87 11.17 7.87 7.31 0 11.84-4.51 11.84-13v-3.19h-.34c-2.18 2.69-6.38 5.04-11.68 5.04-11.09 0-21.25-9.66-21.25-22.09 0-12.52 10.16-22.26 21.25-22.26 5.29 0 9.49 2.35 11.68 4.96h.34v-3.61h9.25zm-8.56 20.92c0-7.81-5.21-13.52-11.84-13.52-6.72 0-12.35 5.71-12.35 13.52 0 7.73 5.63 13.36 12.35 13.36 6.63 0 11.84-5.63 11.84-13.36z"
+      />
+      <path fill="#34A853" d="M225 3v65h-9.5V3h9.5z" />
+      <path
+        fill="#EA4335"
+        d="M262.02 54.48l7.56 5.04c-2.44 3.61-8.32 9.83-18.48 9.83-12.6 0-22.01-9.74-22.01-22.18 0-13.19 9.49-22.18 20.92-22.18 11.51 0 17.14 9.16 18.98 14.11l1.01 2.52-29.65 12.28c2.27 4.45 5.8 6.72 10.75 6.72 4.96 0 8.4-2.44 10.92-6.14zm-23.27-7.98l19.82-8.23c-1.09-2.77-4.37-4.7-8.23-4.7-4.95 0-11.84 4.37-11.59 12.93z"
+      />
+      <path
+        fill="#4285F4"
+        d="M35.29 41.41V32H67c.31 1.64.47 3.58.47 5.68 0 7.06-1.93 15.79-8.15 22.01-6.05 6.3-13.78 9.66-24.02 9.66C16.32 69.35.36 53.89.36 34.91.36 15.93 16.32.47 35.3.47c10.5 0 17.98 4.12 23.6 9.49l-6.64 6.64c-4.03-3.78-9.49-6.72-16.97-6.72-13.86 0-24.7 11.17-24.7 25.03 0 13.86 10.84 25.03 24.7 25.03 8.99 0 14.11-3.61 17.39-6.89 2.66-2.66 4.41-6.46 5.1-11.65l-22.49.01z"
       />
     </svg>
   );
@@ -76,12 +104,32 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const trustPoints = [
-  { title: "Philadelphia Local Experts" },
-  { title: "Licensed & Insured" },
-  { title: "Careful Handling" },
-  { title: "On-Time & Reliable" },
-  { title: "Straightforward Pricing" },
+const ratingPlatforms: {
+  name: string;
+  rating: string;
+  reviews?: string;
+  icon?: React.ReactNode;
+  logoSrc?: string;
+  logoClassName?: string;
+}[] = [
+  {
+    name: "Google",
+    rating: "4.9",
+    reviews: "100+ Reviews",
+    icon: <GoogleWordmark className="h-10" />,
+  },
+  {
+    name: "Yelp",
+    rating: "5.0",
+    logoSrc: "/images/logo/yelp_logo.png",
+    logoClassName: "h-[43px]",
+  },
+  {
+    name: "HomeAdvisor",
+    rating: "5.0",
+    logoSrc: "/images/logo/homeadvisor.webp",
+    logoClassName: "h-9",
+  },
 ];
 
 const services = [
@@ -114,37 +162,6 @@ const services = [
     iconSrc: "/images/icons/long-distance-moving-icon.png",
     title: "Long-Distance Moving",
     body: "Planning a move beyond the Philadelphia area? Contact Movers To Go to discuss your long-distance move and get a moving estimate based on your specific needs.",
-  },
-];
-
-const reviewPlatforms: {
-  name: string;
-  href: string;
-  subtitle?: string;
-  showStars?: boolean;
-  icon?: React.ReactNode;
-  logoSrc?: string;
-  logoClassName?: string;
-}[] = [
-  {
-    name: "Google",
-    href: "https://maps.app.goo.gl/sgnmWFQ6zaYtbdRo6",
-    subtitle: "4.9 · 100+ Reviews",
-    icon: <GoogleIcon />,
-  },
-  {
-    name: "Yelp",
-    href: "https://www.yelp.com/biz/movers-to-go-huntingdon-valley-2",
-    logoSrc: "/images/logo/yelp_logo.png",
-    logoClassName: "h-5",
-    showStars: true,
-  },
-  {
-    name: "HomeAdvisor",
-    href: "https://www.homeadvisor.com/rated.MoversToGo.110529564.html",
-    logoSrc: "/images/logo/homeadvisor.webp",
-    logoClassName: "h-4",
-    showStars: true,
   },
 ];
 
@@ -221,12 +238,21 @@ const reviewTabs: {
   },
 ];
 
+const whyUsStats = [
+  { value: "10+", label: "Years of Experience" },
+  { value: "4.9★", label: "Average Rating" },
+  { value: "15 Min", label: "Free Quote Turnaround" },
+];
+
 const serviceAreaCards = [
   { name: "Philadelphia", subtitle: "Local Moving Services" },
   { name: "Huntingdon Valley", subtitle: "Local Moving Services" },
   { name: "Montgomery County", subtitle: "Local Moving Services" },
   { name: "Bucks County", subtitle: "Local Moving Services" },
 ];
+
+// Varied heights create a masonry look instead of uniform tiles.
+const galleryPhotoHeights = ["h-72", "h-44", "h-56", "h-80", "h-40", "h-64"];
 
 const galleryPhotos = [
   {
@@ -302,13 +328,47 @@ function Index() {
 
       <main>
         {/* Hero */}
-        <section className="bg-[linear-gradient(to_right,rgba(255,255,255,0.8),rgba(255,255,255,0.6)_50%,rgba(255,255,255,0.45)_100%),url('/images/heromovers.webp')] bg-cover bg-center sm:bg-[linear-gradient(to_right,rgba(255,255,255,0.97),rgba(255,255,255,0.85)_32%,rgba(255,255,255,0)_50%),url('/images/heromovers.webp')] sm:min-h-[529px] lg:min-h-[635px]">
-          <div className="mx-auto flex max-w-7xl items-center px-4 pt-24 pb-14 sm:min-h-[529px] sm:px-6 sm:pt-28 lg:min-h-[635px] lg:pt-32 lg:pb-20">
+        <section className="relative overflow-hidden bg-white sm:min-h-[529px] lg:min-h-[635px]">
+          <img
+            src="/images/dot-blob.svg"
+            alt=""
+            aria-hidden="true"
+            className="pointer-events-none absolute -top-12 -left-12 z-0 h-[280px] w-[280px] select-none sm:-top-16 sm:-left-16 sm:h-[380px] sm:w-[380px] lg:h-[460px] lg:w-[460px]"
+          />
+          <img
+            src="/images/dot-blob.svg"
+            alt=""
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-12 -bottom-12 z-0 h-[280px] w-[280px] rotate-180 select-none sm:-right-16 sm:-bottom-16 sm:h-[380px] sm:w-[380px] lg:h-[460px] lg:w-[460px]"
+          />
+          <div className="absolute z-10 hidden shrink-0 sm:top-10 sm:right-8 sm:block sm:h-24 sm:w-44 lg:top-1/2 lg:right-12 lg:h-64 lg:w-[360px] lg:-translate-y-1/2 xl:hidden">
+            <div aria-hidden="true" className="absolute top-2 -right-2 h-[85%] w-[85%] rounded-2xl bg-[#011936]" />
+            <img
+              src="/images/truck-transporent.webp"
+              alt="Movers To Go moving truck"
+              className="relative h-full w-full object-contain drop-shadow-xl"
+            />
+          </div>
+          <div aria-hidden="true" className="absolute inset-x-6 bottom-0 z-0 h-40 rounded-t-[2.5rem] bg-[#011936] sm:hidden" />
+          <img
+            src="/images/truck-transporent.webp"
+            alt="Movers To Go moving truck"
+            className="absolute inset-x-0 bottom-0 z-0 mx-auto h-44 w-auto max-w-none object-contain drop-shadow-2xl sm:hidden"
+          />
+          <div className="relative z-10 mx-auto flex max-w-7xl items-center px-4 pt-24 pb-56 sm:min-h-[529px] sm:px-6 sm:pt-28 sm:pb-14 lg:min-h-[635px] lg:pt-32 lg:pb-20">
+            <div className="hidden xl:absolute xl:top-1/2 xl:right-12 xl:block xl:h-[550px] xl:w-[550px] xl:-translate-y-1/2">
+              <div aria-hidden="true" className="absolute inset-0 rounded-full bg-[#011936]" />
+              <img
+                src="/images/truck-transporent.webp"
+                alt="Movers To Go moving truck"
+                className="absolute right-0 bottom-4 h-[443px] w-[634px] max-w-none object-contain drop-shadow-2xl"
+              />
+            </div>
             <div className="max-w-2xl">
-              <h1 className="font-display text-6xl leading-[1.05] font-extrabold text-foreground sm:text-6xl lg:text-7xl">
+              <h1 className="font-display text-6xl leading-[1.05] font-extrabold tracking-[0.01em] text-foreground sm:text-6xl lg:text-7xl">
                 Philadelphia
                 <br />
-                <span className="text-brand">Local Movers</span>
+                Local Movers
               </h1>
               <p className="mt-4 text-2xl font-extrabold text-foreground sm:text-3xl">
                 Trusted From Start to Finish.
@@ -321,17 +381,30 @@ function Index() {
               </p>
 
               <div className="mt-9">
-                <Link
-                  to="/contact"
-                  aria-label="Get your free moving quote"
-                  className="group animate-cta-pulse inline-flex items-center justify-center gap-2 rounded-lg bg-brand px-8 py-4 text-base font-bold tracking-wide text-white uppercase shadow-md shadow-brand/30 transition-all hover:scale-[1.04] hover:animate-none hover:opacity-90 active:scale-95 focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:outline-none"
-                >
-                  Check Your Rate
-                  <ArrowRight
-                    aria-hidden="true"
-                    className="h-4 w-4 transition-transform group-hover:translate-x-1"
-                  />
-                </Link>
+                <div className="flex flex-wrap items-center gap-5">
+                  <Link
+                    to="/contact"
+                    aria-label="Get your free moving quote"
+                    className="group animate-cta-pulse inline-flex items-center justify-center gap-2 rounded-lg bg-brand px-8 py-4 text-base font-bold tracking-wide text-white uppercase shadow-md shadow-brand/30 transition-all hover:scale-[1.04] hover:animate-none hover:opacity-90 active:scale-95 focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:outline-none"
+                  >
+                    Check Your Rate
+                    <ArrowRight
+                      aria-hidden="true"
+                      className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                    />
+                  </Link>
+
+                  <div className="flex items-center gap-3 border-l-2 border-border pl-5">
+                    <span className="font-display text-3xl leading-none font-extrabold text-brand">
+                      10+
+                    </span>
+                    <span className="text-sm leading-tight font-bold text-foreground">
+                      Years
+                      <br />
+                      in Business
+                    </span>
+                  </div>
+                </div>
 
                 <a
                   href={site.phoneHref}
@@ -339,81 +412,79 @@ function Index() {
                   className="mt-6 hidden w-fit items-center justify-center gap-2 text-base font-bold text-foreground transition-opacity hover:opacity-80 active:scale-95 focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none sm:flex"
                 >
                   <Smartphone aria-hidden="true" className="h-4 w-4 text-brand" />
-                  <span className="tracking-wide text-brand uppercase">
-                    Or give us a call:
-                  </span>{" "}
                   {site.phoneDisplay}
                 </a>
-              </div>
-
-              <div className="mt-10 mb-16 flex flex-wrap items-center gap-3 sm:mb-20">
-                {reviewPlatforms.map((platform) => (
-                  <a
-                    key={platform.name}
-                    href={platform.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={`Read Movers To Go reviews on ${platform.name}`}
-                    className="flex items-center gap-2 rounded-lg border border-border bg-white px-3 py-2 shadow-sm transition-shadow hover:shadow-md focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none"
-                  >
-                    {platform.logoSrc ? (
-                      <img
-                        src={platform.logoSrc}
-                        alt={platform.name}
-                        className={`w-auto shrink-0 ${platform.logoClassName}`}
-                      />
-                    ) : (
-                      <span aria-hidden="true" className="grid h-6 w-6 shrink-0 place-items-center">
-                        {platform.icon}
-                      </span>
-                    )}
-                    {platform.showStars ? (
-                      <span
-                        aria-label="Rated 5 out of 5 stars"
-                        role="img"
-                        className="flex text-brand"
-                      >
-                        {Array.from({ length: 5 }).map((_, i) => (
-                          <Star key={i} aria-hidden="true" className="h-3.5 w-3.5 fill-current" />
-                        ))}
-                      </span>
-                    ) : (
-                      <span className="text-sm font-bold text-foreground">{platform.subtitle}</span>
-                    )}
-                  </a>
-                ))}
               </div>
             </div>
           </div>
         </section>
 
         {/* Trust bar */}
-        <section className="bg-surface pb-10 sm:pb-14 lg:pb-16">
-          <div className="px-4 sm:px-6">
-            <div className="mx-auto max-w-7xl border border-border bg-background px-6 py-10 sm:px-10 lg:py-12">
-              <div className="grid grid-cols-1 gap-8 divide-y divide-border sm:grid-cols-2 sm:gap-x-10 sm:gap-y-10 sm:divide-y-0 lg:grid-cols-5">
-                {trustPoints.map((point, index) => (
-                  <div
-                    key={point.title}
-                    className={`flex flex-col items-center pt-8 text-center first:pt-0 sm:pt-0 ${index === 0 ? "" : "lg:border-l lg:border-border lg:pl-6"}`}
-                  >
-                    <span aria-hidden="true" className="h-1 w-12 bg-brand" />
-                    <p className="mt-4 font-display text-xl font-extrabold tracking-wide uppercase sm:text-2xl">
-                      {point.title}
-                    </p>
-                  </div>
-                ))}
-              </div>
+        <section className="relative overflow-hidden bg-white pt-[44px] pb-16 sm:pt-[60px] sm:pb-20 lg:pt-[76px] lg:pb-24">
+          <img
+            src="/images/dot-blob.svg"
+            alt=""
+            aria-hidden="true"
+            className="pointer-events-none absolute top-8 right-0 z-0 h-64 w-64 translate-x-1/3 select-none sm:h-80 sm:w-80 lg:h-96 lg:w-96 lg:translate-x-1/4"
+          />
+          <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-1/2 bg-[#011936]" />
+          <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
+            <div aria-hidden="true" className="h-px w-full bg-foreground/10" />
+            <h2 className="section-heading mt-10 text-center">
+              Rated 5 Stars by Our Customers
+            </h2>
+            <div className="mx-auto mt-[20px] grid max-w-md grid-cols-1 gap-6 sm:max-w-[67.2rem] sm:grid-cols-3">
+              {ratingPlatforms.map((platform) => (
+                <div
+                  key={platform.name}
+                  className="relative flex flex-col items-center overflow-hidden rounded-2xl border border-border bg-background px-6 pt-8 pb-7 text-center shadow-lg"
+                >
+                  {platform.logoSrc ? (
+                    <img
+                      src={platform.logoSrc}
+                      alt={platform.name}
+                      className={`w-auto shrink-0 ${platform.logoClassName}`}
+                    />
+                  ) : (
+                    <span aria-hidden="true" className="grid shrink-0 place-items-center">
+                      {platform.icon}
+                    </span>
+                  )}
+                  <p className="mt-5 flex items-baseline gap-2 font-display text-3xl font-extrabold text-brand sm:text-4xl">
+                    {platform.rating}
+                    {platform.reviews ? (
+                      <span className="font-sans text-sm font-bold tracking-wide text-foreground/60 uppercase">
+                        {platform.reviews}
+                      </span>
+                    ) : null}
+                  </p>
+                  <span aria-hidden="true" className="mt-4 flex text-brand">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <Star key={i} aria-hidden="true" className="h-5 w-5 fill-current" />
+                    ))}
+                  </span>
+                  <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-1.5 bg-brand" />
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
         {/* Why Movers To Go */}
-        <section id="why-movers-to-go" className="scroll-mt-24 border-b border-border bg-surface">
-          <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:py-24">
+        <section
+          id="why-movers-to-go"
+          className="relative scroll-mt-24 overflow-hidden border-b border-border bg-surface"
+        >
+          <img
+            src="/images/dot-blob.svg"
+            alt=""
+            aria-hidden="true"
+            className="pointer-events-none absolute -top-16 -left-16 z-0 h-[260px] w-[260px] select-none sm:-top-20 sm:-left-20 sm:h-[340px] sm:w-[340px]"
+          />
+          <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:py-24">
             <div>
               <h2 className="section-heading">
-                Why Choose <span className="text-brand">Movers To Go</span>?
+                Why Choose Movers To Go?
               </h2>
               <p className="mt-4 text-lg text-foreground">
                 Movers To Go is a trusted Philadelphia moving company providing reliable local
@@ -425,24 +496,51 @@ function Index() {
                 with straightforward pricing, dependable service, and a team you can count on from
                 start to finish.
               </p>
+
+              <ul className="mt-8 space-y-3 border-t border-border pt-8">
+                {whyUsStats.map((stat) => (
+                  <li key={stat.label} className="flex items-center gap-3">
+                    <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-brand text-white">
+                      <Check aria-hidden="true" className="h-4 w-4" />
+                    </span>
+                    <span className="text-lg text-foreground">
+                      <span className="font-display font-extrabold text-brand">{stat.value}</span>{" "}
+                      {stat.label}
+                    </span>
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            <div className="overflow-hidden rounded-2xl shadow-lg">
-              <img
-                src="/images/whyus.webp"
-                alt="The Movers To Go crew in front of their moving truck"
-                className="h-80 w-full object-cover lg:h-[28rem]"
+            <div className="relative">
+              <div
+                aria-hidden="true"
+                className="absolute -top-4 -right-4 h-full w-full rounded-2xl bg-[#011936] sm:-top-6 sm:-right-6"
               />
+              <div className="relative overflow-hidden rounded-2xl shadow-lg">
+                <img
+                  src="/images/whyus.webp"
+                  alt="The Movers To Go crew in front of their moving truck"
+                  className="h-80 w-full object-cover lg:h-[28rem]"
+                />
+              </div>
             </div>
           </div>
         </section>
 
         {/* Services */}
-        <section id="services" className="scroll-mt-24 border-b border-border bg-surface">
-          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-24">
+        <section id="services" className="relative scroll-mt-24 overflow-hidden border-b border-border bg-surface">
+          <img
+            src="/images/herocontact.webp"
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+          <div aria-hidden="true" className="absolute inset-0 bg-surface/60" />
+          <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-24">
             <div>
               <h2 className="section-heading">
-                Moving Services in <span className="text-brand">Philadelphia</span>
+                Moving Services in Philadelphia
               </h2>
               <p className="mt-3 max-w-2xl text-foreground">
                 Reliable moving services for homes, apartments, and businesses throughout
@@ -454,15 +552,23 @@ function Index() {
               {services.map((service) => (
                 <article
                   key={service.title}
-                  className="flex flex-col rounded-2xl border border-border bg-background p-6 shadow-sm transition-all hover:-translate-y-1 hover:border-brand hover:shadow-lg"
+                  className="relative flex flex-col overflow-hidden rounded-2xl border border-border bg-background p-6 shadow-sm transition-all hover:-translate-y-1 hover:border-[#011936] hover:shadow-lg"
                 >
                   <div className="flex items-center gap-4">
-                    <span className="grid h-20 w-20 shrink-0 place-items-center rounded-full border-2 border-brand bg-brand/10">
-                      <img
-                        src={service.iconSrc}
-                        alt=""
+                    <span className="grid h-20 w-20 shrink-0 place-items-center rounded-full border-2 border-[#011936] bg-white">
+                      <span
                         aria-hidden="true"
-                        className="h-12 w-12 object-contain"
+                        className="h-12 w-12 bg-[#011936]"
+                        style={{
+                          maskImage: `url(${service.iconSrc})`,
+                          maskSize: "contain",
+                          maskRepeat: "no-repeat",
+                          maskPosition: "center",
+                          WebkitMaskImage: `url(${service.iconSrc})`,
+                          WebkitMaskSize: "contain",
+                          WebkitMaskRepeat: "no-repeat",
+                          WebkitMaskPosition: "center",
+                        }}
                       />
                     </span>
                     <h3 className="font-display text-3xl font-bold">{service.title}</h3>
@@ -475,6 +581,7 @@ function Index() {
                   >
                     Get Quote
                   </Link>
+                  <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-1.5 bg-[#011936]" />
                 </article>
               ))}
             </div>
@@ -482,10 +589,16 @@ function Index() {
         </section>
 
         {/* How it works */}
-        <section id="how-it-works" className="scroll-mt-24 border-b border-border">
-          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-24">
+        <section id="how-it-works" className="relative scroll-mt-24 overflow-hidden border-b border-border">
+          <img
+            src="/images/dot-blob.svg"
+            alt=""
+            aria-hidden="true"
+            className="pointer-events-none absolute -top-20 -right-20 z-0 h-[280px] w-[280px] select-none sm:-top-24 sm:-right-24 sm:h-[360px] sm:w-[360px]"
+          />
+          <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-24">
             <h2 className="section-heading max-w-2xl">
-              Moving made easy with our <span className="text-brand">3-step process</span>
+              Moving made easy with our 3-step process
             </h2>
             <p className="mt-4 max-w-2xl text-foreground">
               From your first call to the last box unpacked, here&rsquo;s exactly what to expect.
@@ -497,23 +610,31 @@ function Index() {
                 return (
                   <div
                     key={step.title}
-                    className={`flex flex-col overflow-hidden border border-border shadow-sm lg:flex-row ${reversed ? "lg:flex-row-reverse" : ""}`}
+                    className={`flex flex-col gap-8 lg:flex-row lg:items-center lg:gap-16 ${reversed ? "lg:flex-row-reverse" : ""}`}
                   >
-                    <div className="relative lg:flex lg:w-2/5 lg:shrink-0 lg:items-center">
-                      <img
-                        src={step.image}
-                        alt={step.alt}
-                        className="h-64 w-full object-cover sm:h-80 lg:h-96"
-                      />
-                      <span
+                    <div className="relative lg:w-2/5 lg:shrink-0">
+                      <div
                         aria-hidden="true"
-                        className="absolute top-0 left-0 grid h-14 w-14 place-items-center bg-brand font-display text-3xl font-extrabold text-white"
-                      >
-                        {index + 1}
-                      </span>
+                        className="absolute -top-4 -right-4 h-full w-full rounded-2xl bg-[#011936] sm:-top-6 sm:-right-6"
+                      />
+                      <div className="relative overflow-hidden rounded-2xl shadow-lg">
+                        <img
+                          src={step.image}
+                          alt={step.alt}
+                          className="h-64 w-full object-cover sm:h-80 lg:h-96"
+                        />
+                        <span
+                          aria-hidden="true"
+                          className="absolute top-0 left-0 grid h-14 w-14 place-items-center rounded-tl-2xl bg-brand font-display text-3xl font-extrabold text-white"
+                        >
+                          {index + 1}
+                        </span>
+                      </div>
                     </div>
-                    <div className="flex flex-col justify-center p-8 sm:p-12 lg:p-14">
-                      <h3 className="section-heading">{step.title}</h3>
+                    <div className="flex flex-col justify-center">
+                      <h3 className="font-display text-xl font-extrabold sm:text-2xl">
+                        {step.title}
+                      </h3>
                       <ul className="mt-7 space-y-5">
                         {step.points.map((point) => (
                           <li key={point} className="flex gap-3 text-xl text-foreground">
@@ -534,30 +655,20 @@ function Index() {
         </section>
 
         {/* Reviews */}
-        <section id="reviews" className="scroll-mt-24 border-b border-border bg-surface">
-          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-24">
+        <section id="reviews" className="relative scroll-mt-24 overflow-hidden border-b border-border bg-surface">
+          <img
+            src="/images/pattern-background.webp"
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 h-full w-full object-cover opacity-50"
+          />
+          <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-24">
             <h2 className="section-heading">
-              Trusted by <span className="text-brand">Philadelphia Customers</span>
+              Trusted by Philadelphia Customers
             </h2>
             <p className="mt-4 max-w-2xl text-foreground">
               See what our customers say about moving with Movers To Go.
             </p>
-
-            <a
-              href="https://maps.app.goo.gl/sgnmWFQ6zaYtbdRo6"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Read Movers To Go reviews on Google"
-              className="mt-6 inline-flex items-center gap-2 rounded-lg bg-brand px-6 py-3 text-sm font-bold tracking-wide text-white uppercase shadow-md shadow-brand/30 transition-all hover:opacity-90 active:scale-95 focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:outline-none"
-            >
-              <span
-                aria-hidden="true"
-                className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-white"
-              >
-                <GoogleIcon />
-              </span>
-              Read Our Google Reviews
-            </a>
 
             <div className="mt-8 flex flex-wrap gap-3">
               {reviewTabs.map((tab) => (
@@ -593,59 +704,42 @@ function Index() {
               <CarouselContent>
                 {reviewsByPlatform[activePlatform].map((review) => (
                   <CarouselItem key={review.name} className="md:basis-1/2">
-                    <div className="flex h-full flex-col rounded-2xl border border-border bg-background p-8 shadow-sm">
+                    <div className="flex h-full flex-col rounded-2xl border border-border bg-background p-6 shadow-sm">
                       <div
                         aria-label="Rated 5 out of 5 stars"
                         role="img"
                         className="flex text-brand"
                       >
                         {Array.from({ length: 5 }).map((_, i) => (
-                          <Star key={i} aria-hidden="true" className="h-5 w-5 fill-current" />
+                          <Star key={i} aria-hidden="true" className="h-4 w-4 fill-current" />
                         ))}
                       </div>
-                      <blockquote className="mt-5 flex-1 text-lg leading-relaxed text-foreground">
+                      <blockquote className="mt-4 flex-1 text-base leading-relaxed text-foreground">
                         “{review.text}”
                       </blockquote>
-                      <p className="mt-6 text-base font-bold">{review.name}</p>
-                      <p className="text-base text-foreground">{review.meta}</p>
+                      <p className="mt-4 text-sm font-bold">{review.name}</p>
+                      <p className="text-sm text-foreground">{review.meta}</p>
                     </div>
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <div className="mt-6 flex justify-center gap-3">
-                <CarouselPrevious className="static h-10 w-10 translate-y-0 border-border" />
-                <CarouselNext className="static h-10 w-10 translate-y-0 border-border" />
-              </div>
-            </Carousel>
-
-            <h3 className="section-heading mt-14">
-              A look at our <span className="text-brand">crews</span> on the job
-            </h3>
-            <p className="mt-2 max-w-2xl text-foreground">Real moves, real crews.</p>
-            <Carousel opts={{ align: "start" }} className="mt-6">
-              <CarouselContent>
-                {galleryPhotos.map((photo) => (
-                  <CarouselItem key={photo.src} className="basis-1/2 sm:basis-1/3 lg:basis-1/5">
-                    <div className="aspect-square overflow-hidden">
-                      <img src={photo.src} alt={photo.alt} className="h-full w-full object-cover" />
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <div className="mt-6 flex justify-center gap-3">
-                <CarouselPrevious className="static h-10 w-10 translate-y-0 border-border" />
-                <CarouselNext className="static h-10 w-10 translate-y-0 border-border" />
-              </div>
+              <CarouselPrevious className="left-0 h-10 w-10 -translate-x-1/2 border-border bg-background" />
+              <CarouselNext className="right-0 h-10 w-10 translate-x-1/2 border-border bg-background" />
             </Carousel>
           </div>
         </section>
 
         {/* Service Area */}
-        <section id="service-area" className="scroll-mt-24 border-b border-border">
-          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-24">
+        <section id="service-area" className="relative scroll-mt-24 overflow-hidden border-b border-border">
+          <img
+            src="/images/dot-blob.svg"
+            alt=""
+            aria-hidden="true"
+            className="pointer-events-none absolute -bottom-20 -left-20 z-0 h-[280px] w-[280px] select-none sm:-bottom-24 sm:-left-24 sm:h-[360px] sm:w-[360px]"
+          />
+          <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-24">
             <h2 className="section-heading">
-              Local Movers Serving <span className="text-brand">Philadelphia</span> &amp;
-              Surrounding Areas
+              Local Movers Serving Philadelphia &amp; Surrounding Areas
             </h2>
             <p className="mt-4 max-w-3xl text-lg text-foreground">
               Movers To Go provides reliable local moving services throughout Philadelphia,
@@ -661,44 +755,75 @@ function Index() {
               Call Us: {site.phoneDisplay}
             </a>
 
-            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {serviceAreaCards.map((area) => (
-                <div
-                  key={area.name}
-                  className="rounded-2xl border border-border bg-background p-6 text-center shadow-sm transition-all hover:-translate-y-1 hover:border-brand hover:shadow-lg"
-                >
-                  <h3 className="font-display text-xl font-extrabold">{area.name}</h3>
-                  <p className="mt-2 text-base text-foreground">{area.subtitle}</p>
+            <div className="mt-10 grid gap-6 lg:grid-cols-2 lg:items-start">
+              <div>
+                <div className="grid grid-cols-2 gap-4">
+                  {serviceAreaCards.map((area) => (
+                    <div
+                      key={area.name}
+                      className="rounded-2xl border border-border bg-background p-6 text-center shadow-sm transition-all hover:-translate-y-1 hover:border-brand hover:shadow-lg"
+                    >
+                      <h3 className="font-display text-xl font-extrabold">{area.name}</h3>
+                      <p className="mt-2 text-base text-foreground">{area.subtitle}</p>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
 
-            <div className="mt-10 h-80 overflow-hidden rounded-2xl border border-border sm:h-96">
-              <iframe
-                title="Movers To Go service area map"
-                src={`https://www.google.com/maps?q=${site.address.lat},${site.address.lng}&z=11&output=embed`}
-                className="h-full w-full"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
+                <div className="mt-6 h-80 overflow-hidden rounded-2xl border border-border sm:h-96">
+                  <iframe
+                    title="Movers To Go service area map"
+                    src={`https://www.google.com/maps?q=${site.address.lat},${site.address.lng}&z=11&output=embed`}
+                    className="h-full w-full"
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
+                </div>
+              </div>
+
+              <div className="columns-2 gap-3">
+                {galleryPhotos.map((photo, index) => (
+                  <div
+                    key={photo.src}
+                    className="mb-3 break-inside-avoid overflow-hidden rounded-2xl"
+                  >
+                    <img
+                      src={photo.src}
+                      alt={photo.alt}
+                      className={`w-full object-cover ${galleryPhotoHeights[index]}`}
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
 
         {/* FAQ */}
-        <section id="faq" className="scroll-mt-24 bg-surface">
-          <div className="mx-auto grid max-w-6xl items-start gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:py-24">
-            <div className="overflow-hidden rounded-2xl shadow-lg lg:sticky lg:top-28">
-              <img
-                src="/images/gallary/philadelphia-movers-team-moving-trucks.webp"
-                alt="Movers To Go team member answering a customer's questions"
-                className="h-64 w-full object-cover sm:h-80 lg:h-[32rem]"
+        <section id="faq" className="relative scroll-mt-24 overflow-hidden bg-surface">
+          <img
+            src="/images/dot-blob.svg"
+            alt=""
+            aria-hidden="true"
+            className="pointer-events-none absolute -top-16 -right-16 z-0 h-[260px] w-[260px] select-none sm:-top-20 sm:-right-20 sm:h-[340px] sm:w-[340px]"
+          />
+          <div className="relative mx-auto grid max-w-6xl items-start gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-20 lg:py-24">
+            <div className="relative lg:sticky lg:top-28">
+              <div
+                aria-hidden="true"
+                className="absolute -top-4 -right-4 h-full w-full rounded-2xl bg-[#011936] sm:-top-6 sm:-right-6"
               />
+              <div className="relative overflow-hidden rounded-2xl shadow-lg">
+                <img
+                  src="/images/gallary/philadelphia-movers-team-moving-trucks.webp"
+                  alt="Movers To Go team member answering a customer's questions"
+                  className="h-64 w-full object-cover sm:h-80 lg:h-[32rem]"
+                />
+              </div>
             </div>
 
             <div>
-              <h2 className="font-display text-4xl font-extrabold sm:text-5xl">
-                Frequently Asked <span className="text-brand">Questions</span>
+              <h2 className="section-heading">
+                Frequently Asked Questions
               </h2>
               <p className="mt-3 text-foreground">
                 Everything Philadelphia customers ask before booking a move.
@@ -724,10 +849,16 @@ function Index() {
         </section>
 
         {/* Final CTA */}
-        <section className="bg-neutral-800 py-16 sm:py-20">
-          <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
+        <section className="relative overflow-hidden bg-neutral-800 py-16 sm:py-20">
+          <img
+            src="/images/dot-blob.svg"
+            alt=""
+            aria-hidden="true"
+            className="pointer-events-none absolute top-1/2 left-1/2 z-0 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 select-none opacity-60 sm:h-[520px] sm:w-[520px]"
+          />
+          <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6">
             <h2 className="font-display text-4xl font-extrabold text-white sm:text-5xl">
-              Ready to <span className="text-brand">Make Your Move</span>?
+              Ready to Make Your Move?
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-lg text-white/80">
               Tell us about your move and check your rates in just a few simple steps.

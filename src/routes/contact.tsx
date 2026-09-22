@@ -45,7 +45,7 @@ function Contact() {
               <h1 className="font-display text-5xl leading-[1.05] font-extrabold sm:text-6xl">
                 Get Your
                 <br />
-                <span className="text-brand">Move Quote</span>
+                Move Quote
               </h1>
               <span
                 aria-hidden="true"

@@ -66,7 +66,7 @@ function NotFoundComponent() {
         <div className="mt-6">
           <Link
             to="/"
-            className="inline-flex items-center justify-center bg-brand px-4 py-2 text-sm font-bold text-white uppercase tracking-wide transition-opacity hover:opacity-90"
+            className="inline-flex items-center justify-center rounded-lg bg-brand px-4 py-2 text-sm font-bold text-white uppercase tracking-wide transition-opacity hover:opacity-90"
           >
             Go home
           </Link>
@@ -98,13 +98,13 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
               router.invalidate();
               reset();
             }}
-            className="inline-flex items-center justify-center bg-brand px-4 py-2 text-sm font-bold text-white uppercase tracking-wide transition-opacity hover:opacity-90"
+            className="inline-flex items-center justify-center rounded-lg bg-brand px-4 py-2 text-sm font-bold text-white uppercase tracking-wide transition-opacity hover:opacity-90"
           >
             Try again
           </button>
           <a
             href="/"
-            className="inline-flex items-center justify-center border border-border bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-brand"
+            className="inline-flex items-center justify-center rounded-lg border border-border bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-brand"
           >
             Go home
           </a>
@@ -154,7 +154,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Arsenal:wght@400;700&family=DM+Sans:wght@400;500;600;700&display=swap",
       },
       {
         rel: "stylesheet",

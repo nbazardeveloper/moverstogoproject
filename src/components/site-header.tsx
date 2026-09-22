@@ -14,8 +14,10 @@ import {
 const navLinks = [
   { label: "Services", to: "/services-coverage", hash: undefined },
   { label: "About Us", to: "/", hash: "why-movers-to-go" },
+  { label: "Locations", to: "/", hash: "service-area" },
   { label: "Reviews", to: "/", hash: "reviews" },
   { label: "FAQ", to: "/", hash: "faq" },
+  { label: "Contact", to: "/contact", hash: undefined },
 ] as const;
 
 export function SiteHeader() {
@@ -43,7 +45,7 @@ export function SiteHeader() {
                 key={link.label}
                 to={link.to}
                 hash={link.hash}
-                className="rounded-md text-base font-bold tracking-wide text-foreground uppercase transition-colors hover:text-brand focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none"
+                className="rounded-md font-display text-base font-bold tracking-wide text-foreground uppercase transition-colors hover:text-brand focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none"
               >
                 {link.label}
               </Link>
@@ -62,7 +64,7 @@ export function SiteHeader() {
             <Link
               to="/contact"
               aria-label="Get a free moving quote"
-              className="hidden items-center justify-center bg-brand px-5 py-2.5 text-base font-bold tracking-wide text-white uppercase shadow-md shadow-brand/30 transition-all hover:opacity-90 active:scale-95 focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:outline-none sm:inline-flex"
+              className="hidden items-center justify-center rounded-lg bg-brand px-5 py-2.5 text-base font-bold tracking-wide text-white uppercase shadow-md shadow-brand/30 transition-all hover:opacity-90 active:scale-95 focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:outline-none sm:inline-flex"
             >
               Get Free Quote
             </Link>
@@ -85,7 +87,7 @@ export function SiteHeader() {
                         to={link.to}
                         hash={link.hash}
                         onClick={() => setOpen(false)}
-                        className="rounded-md px-3 py-3 text-base font-bold tracking-wide text-foreground uppercase transition-colors hover:bg-surface focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none"
+                        className="rounded-md px-3 py-3 font-display text-base font-bold tracking-wide text-foreground uppercase transition-colors hover:bg-surface focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none"
                       >
                         {link.label}
                       </Link>
@@ -105,6 +107,7 @@ export function SiteHeader() {
           </div>
         </div>
       </div>
+      <div aria-hidden="true" className="h-3 w-full bg-[#011936]" />
     </header>
   );
 }

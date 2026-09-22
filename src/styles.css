@@ -19,16 +19,15 @@
  */
 
 @theme inline {
-  --font-display: "Sofia Sans Condensed", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Arsenal", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
-  --container-7xl: 96rem;
-  --radius-sm: 0px;
-  --radius-md: 0px;
-  --radius-lg: 0px;
-  --radius-xl: 0px;
-  --radius-2xl: 0px;
-  --radius-3xl: 0px;
-  --radius-4xl: 0px;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-3xl: 1.5rem;
+  --radius-4xl: 2rem;
   --color-brand: var(--brand);
   --color-brand-foreground: var(--brand-foreground);
   --color-surface: var(--surface);
@@ -58,23 +57,23 @@
 
 :root {
   --background: oklch(1 0 0);
-  --foreground: oklch(0.218 0 0);
+  --foreground: oklch(0.214 0.065 253.8);
   --brand: oklch(0.655 0.261 356.9);
-  --brand-foreground: oklch(0.218 0 0);
+  --brand-foreground: oklch(0.214 0.065 253.8);
   --surface: oklch(0.982 0.002 247.8);
   --surface-strong: oklch(0.963 0.003 247.9);
   --card: oklch(0.982 0.002 247.8);
-  --card-foreground: oklch(0.218 0 0);
+  --card-foreground: oklch(0.214 0.065 253.8);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.218 0 0);
+  --popover-foreground: oklch(0.214 0.065 253.8);
   --primary: oklch(0.655 0.261 356.9);
-  --primary-foreground: oklch(0.218 0 0);
+  --primary-foreground: oklch(0.214 0.065 253.8);
   --secondary: oklch(0.963 0.003 247.9);
-  --secondary-foreground: oklch(0.218 0 0);
+  --secondary-foreground: oklch(0.214 0.065 253.8);
   --muted: oklch(0.963 0.003 247.9);
   --muted-foreground: oklch(0.47 0.02 264.4);
   --accent: oklch(0.963 0.003 247.9);
-  --accent-foreground: oklch(0.218 0 0);
+  --accent-foreground: oklch(0.214 0.065 253.8);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
   --border: oklch(0.888 0.006 264.5);
@@ -120,7 +119,7 @@
 
 /* Shared size/weight for homepage section headings — one definition, no per-instance duplication */
 .section-heading {
-  @apply font-display text-4xl font-extrabold sm:text-5xl;
+  @apply font-display text-3xl font-extrabold sm:text-4xl;
 }
 
 @layer base {
