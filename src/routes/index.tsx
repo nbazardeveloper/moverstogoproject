@@ -373,7 +373,6 @@ function Index() {
               <p className="mt-4 text-2xl font-extrabold text-foreground sm:text-3xl">
                 Trusted From Start to Finish.
               </p>
-              <span aria-hidden="true" className="mt-2 block h-1 w-16 rounded-full bg-brand" />
               <p className="mt-4 max-w-xl text-lg font-bold text-foreground sm:text-xl sm:text-foreground/75">
                 Professional Local Moving Services
                 <br />
