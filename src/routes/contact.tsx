@@ -41,25 +41,7 @@ function Contact() {
           />
 
           <div className="relative mx-auto max-w-2xl px-4 py-16 sm:px-6 lg:py-20">
-            <div className="text-center">
-              <h1 className="font-display text-5xl leading-[1.05] font-extrabold sm:text-6xl">
-                Get Your
-                <br />
-                Move Quote
-              </h1>
-              <span
-                aria-hidden="true"
-                className="mx-auto mt-3 block h-1 w-16 rounded-full bg-brand"
-              />
-              <p className="mt-5 text-base text-foreground sm:text-lg">
-                To get your free quote with a guaranteed hourly rate, please fill out the form
-                below.
-              </p>
-            </div>
-
-            <div className="mt-10 text-left">
-              <QuoteForm />
-            </div>
+            <QuoteForm />
           </div>
         </section>
 
@@ -90,7 +72,7 @@ function Contact() {
                     <a
                       href={site.phoneHref}
                       aria-label={`Call Movers To Go at ${site.phoneDisplay}`}
-                      className="mt-1 inline-block rounded-md text-lg font-bold text-foreground transition-colors hover:text-brand focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none"
+                      className="mt-1 inline-block rounded-md text-lg font-bold text-foreground transition-colors hover:text-brand"
                     >
                       {site.phoneDisplay}
                     </a>
@@ -115,7 +97,7 @@ function Contact() {
                     <a
                       href={site.emailHref}
                       aria-label={`Email Movers To Go at ${site.email}`}
-                      className="mt-1 inline-block rounded-md text-lg font-semibold text-foreground transition-colors hover:text-brand focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none"
+                      className="mt-1 inline-block rounded-md text-lg font-semibold text-foreground transition-colors hover:text-brand"
                     >
                       {site.email}
                     </a>

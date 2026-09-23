@@ -2,19 +2,17 @@
 @source "../src";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
-
 /*
  * Design system definition.
  *
  * The @theme inline block maps CSS custom properties to Tailwind utility
  * classes (e.g. --color-primary -> bg-primary, text-primary).
  *
- * The :root and .dark blocks define the actual color values using oklch.
+ * The :root block below defines the actual color values using oklch.
  * All colors MUST use oklch format.
  *
  * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
+ * 1. Add the variable to :root
  * 2. Register it in @theme inline as --color-<name>: var(--<name>)
  */
 
@@ -33,10 +31,7 @@
   --color-surface: var(--surface);
   --color-surface-strong: var(--surface-strong);
   --color-background: var(--background);
-
   --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
@@ -62,8 +57,6 @@
   --brand-foreground: oklch(0.214 0.065 253.8);
   --surface: oklch(0.982 0.002 247.8);
   --surface-strong: oklch(0.963 0.003 247.9);
-  --card: oklch(0.982 0.002 247.8);
-  --card-foreground: oklch(0.214 0.065 253.8);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.214 0.065 253.8);
   --primary: oklch(0.655 0.261 356.9);
@@ -81,47 +74,9 @@
   --ring: oklch(0.655 0.261 356.9);
 }
 
-.dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
-}
-
-@keyframes cta-pulse {
-  0%,
-  100% {
-    box-shadow: 0 0 0 0 color-mix(in oklch, var(--brand) 45%, transparent);
-  }
-  50% {
-    box-shadow: 0 0 0 12px color-mix(in oklch, var(--brand) 0%, transparent);
-  }
-}
-
-.animate-cta-pulse {
-  animation: cta-pulse 2.2s ease-out infinite;
-}
-
-/* Shared size/weight for homepage section headings — one definition, no per-instance duplication */
-.section-heading {
-  @apply font-display text-3xl font-extrabold sm:text-4xl;
-}
-
+/*
+ * Base — element-level defaults applied site-wide, no classes needed.
+ */
 @layer base {
   * {
     border-color: var(--color-border);
@@ -142,8 +97,39 @@
     letter-spacing: -0.02em;
   }
 
+  /* Single site-wide focus style — keep utility classes from re-declaring this per element. */
   :focus-visible {
-    outline: 2px solid var(--brand);
-    outline-offset: 2px;
+    outline: none;
+    box-shadow: 0 0 0 2px var(--brand);
   }
+}
+
+/*
+ * Components — small reusable classes for patterns repeated across pages.
+ * Prefer one of these (or adding a new one) over pasting the same long
+ * className string into multiple components.
+ */
+@layer components {
+  /* Homepage/section H2s: size, weight, and brand color in one place. */
+  .section-heading {
+    @apply font-display text-3xl font-extrabold sm:text-4xl;
+    color: #3c0b68;
+  }
+}
+
+/*
+ * Animations
+ */
+@keyframes cta-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in oklch, var(--brand) 45%, transparent);
+  }
+  50% {
+    box-shadow: 0 0 0 12px color-mix(in oklch, var(--brand) 0%, transparent);
+  }
+}
+
+.animate-cta-pulse {
+  animation: cta-pulse 2.2s ease-out infinite;
 }

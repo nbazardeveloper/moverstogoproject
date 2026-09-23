@@ -17,6 +17,7 @@ import {
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { MobileStickyCta } from "@/components/mobile-sticky-cta";
+import { PhotoWithBackdrop } from "@/components/photo-with-backdrop";
 import { faqs, site, testimonials } from "@/data/site";
 
 function GoogleIcon({ className = "h-6 w-6" }: { className?: string }) {
@@ -328,28 +329,34 @@ function Index() {
 
       <main>
         {/* Hero */}
-        <section className="relative overflow-hidden bg-white sm:min-h-[529px] lg:min-h-[635px]">
+        <section className="relative overflow-hidden bg-[#3C0B68] sm:min-h-[529px] lg:min-h-[635px]">
           <img
             src="/images/dot-blob.svg"
             alt=""
             aria-hidden="true"
-            className="pointer-events-none absolute -top-12 -left-12 z-0 h-[280px] w-[280px] select-none sm:-top-16 sm:-left-16 sm:h-[380px] sm:w-[380px] lg:h-[460px] lg:w-[460px]"
+            className="pointer-events-none absolute -top-12 -left-12 z-0 hidden h-[280px] w-[280px] select-none sm:-top-16 sm:-left-16 sm:h-[380px] sm:w-[380px] lg:h-[460px] lg:w-[460px]"
           />
           <img
             src="/images/dot-blob.svg"
             alt=""
             aria-hidden="true"
-            className="pointer-events-none absolute -right-12 -bottom-12 z-0 h-[280px] w-[280px] rotate-180 select-none sm:-right-16 sm:-bottom-16 sm:h-[380px] sm:w-[380px] lg:h-[460px] lg:w-[460px]"
+            className="pointer-events-none absolute -right-12 -bottom-12 z-0 hidden h-[280px] w-[280px] rotate-180 select-none sm:-right-16 sm:-bottom-16 sm:h-[380px] sm:w-[380px] lg:h-[460px] lg:w-[460px]"
           />
           <div className="absolute z-10 hidden shrink-0 sm:top-10 sm:right-8 sm:block sm:h-24 sm:w-44 lg:top-1/2 lg:right-12 lg:h-64 lg:w-[360px] lg:-translate-y-1/2 xl:hidden">
-            <div aria-hidden="true" className="absolute top-2 -right-2 h-[85%] w-[85%] rounded-2xl bg-[#011936]" />
+            <div
+              aria-hidden="true"
+              className="absolute top-2 -right-2 hidden h-[85%] w-[85%] rounded-2xl bg-[#3C0B68]"
+            />
             <img
               src="/images/truck-transporent.webp"
               alt="Movers To Go moving truck"
               className="relative h-full w-full object-contain drop-shadow-xl"
             />
           </div>
-          <div aria-hidden="true" className="absolute inset-x-6 bottom-0 z-0 h-40 rounded-t-[2.5rem] bg-[#011936] sm:hidden" />
+          <div
+            aria-hidden="true"
+            className="absolute inset-x-6 bottom-0 z-0 hidden h-40 rounded-t-[2.5rem] bg-[#3C0B68] sm:hidden"
+          />
           <img
             src="/images/truck-transporent.webp"
             alt="Movers To Go moving truck"
@@ -357,7 +364,10 @@ function Index() {
           />
           <div className="relative z-10 mx-auto flex max-w-7xl items-center px-4 pt-24 pb-56 sm:min-h-[529px] sm:px-6 sm:pt-28 sm:pb-14 lg:min-h-[635px] lg:pt-32 lg:pb-20">
             <div className="hidden xl:absolute xl:top-1/2 xl:right-12 xl:block xl:h-[550px] xl:w-[550px] xl:-translate-y-1/2">
-              <div aria-hidden="true" className="absolute inset-0 rounded-full bg-[#011936]" />
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 hidden rounded-full bg-[#3C0B68]"
+              />
               <img
                 src="/images/truck-transporent.webp"
                 alt="Movers To Go moving truck"
@@ -365,15 +375,15 @@ function Index() {
               />
             </div>
             <div className="max-w-2xl">
-              <h1 className="font-display text-6xl leading-[1.05] font-extrabold tracking-[0.01em] text-foreground sm:text-6xl lg:text-7xl">
+              <h1 className="font-display text-6xl leading-[1.05] font-extrabold tracking-[0.01em] text-white sm:text-6xl lg:text-7xl">
                 Philadelphia
                 <br />
                 Local Movers
               </h1>
-              <p className="mt-4 text-2xl font-extrabold text-foreground sm:text-3xl">
+              <p className="mt-4 text-2xl font-extrabold text-white sm:text-3xl">
                 Trusted From Start to Finish.
               </p>
-              <p className="mt-4 max-w-xl text-lg font-bold text-foreground sm:text-xl sm:text-foreground/75">
+              <p className="mt-4 max-w-xl text-lg font-bold text-white sm:text-xl sm:text-white/75">
                 Professional Local Moving Services
                 <br />
                 in Philadelphia &amp; Surrounding Areas
@@ -393,11 +403,11 @@ function Index() {
                     />
                   </Link>
 
-                  <div className="flex items-center gap-3 border-l-2 border-border pl-5">
+                  <div className="flex items-center gap-3 border-l-2 border-white/20 pl-5">
                     <span className="font-display text-3xl leading-none font-extrabold text-brand">
                       10+
                     </span>
-                    <span className="text-sm leading-tight font-bold text-foreground">
+                    <span className="text-sm leading-tight font-bold text-white">
                       Years
                       <br />
                       in Business
@@ -408,7 +418,7 @@ function Index() {
                 <a
                   href={site.phoneHref}
                   aria-label={`Call Movers To Go at ${site.phoneDisplay}`}
-                  className="mt-6 hidden w-fit items-center justify-center gap-2 text-base font-bold text-foreground transition-opacity hover:opacity-80 active:scale-95 focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none sm:flex"
+                  className="mt-6 hidden w-fit items-center justify-center gap-2 text-base font-bold text-white transition-opacity hover:opacity-80 active:scale-95 sm:flex"
                 >
                   <Smartphone aria-hidden="true" className="h-4 w-4 text-brand" />
                   {site.phoneDisplay}
@@ -426,12 +436,10 @@ function Index() {
             aria-hidden="true"
             className="pointer-events-none absolute top-8 right-0 z-0 h-64 w-64 translate-x-1/3 select-none sm:h-80 sm:w-80 lg:h-96 lg:w-96 lg:translate-x-1/4"
           />
-          <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-1/2 bg-[#011936]" />
+          <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-1/2 bg-[#3C0B68]" />
           <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
             <div aria-hidden="true" className="h-px w-full bg-foreground/10" />
-            <h2 className="section-heading mt-10 text-center">
-              Rated 5 Stars by Our Customers
-            </h2>
+            <h2 className="section-heading mt-10 text-center">Rated 5 Stars by Our Customers</h2>
             <div className="mx-auto mt-[20px] grid max-w-md grid-cols-1 gap-6 sm:max-w-[67.2rem] sm:grid-cols-3">
               {ratingPlatforms.map((platform) => (
                 <div
@@ -482,9 +490,7 @@ function Index() {
           />
           <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:py-24">
             <div>
-              <h2 className="section-heading">
-                Why Choose Movers To Go?
-              </h2>
+              <h2 className="section-heading">Why Choose Movers To Go?</h2>
               <p className="mt-4 text-lg text-foreground">
                 Movers To Go is a trusted Philadelphia moving company providing reliable local
                 moving services throughout Philadelphia and surrounding areas. Our experienced
@@ -511,24 +517,19 @@ function Index() {
               </ul>
             </div>
 
-            <div className="relative">
-              <div
-                aria-hidden="true"
-                className="absolute -top-4 -right-4 h-full w-full rounded-2xl bg-[#011936] sm:-top-6 sm:-right-6"
-              />
-              <div className="relative overflow-hidden rounded-2xl shadow-lg">
-                <img
-                  src="/images/whyus.webp"
-                  alt="The Movers To Go crew in front of their moving truck"
-                  className="h-80 w-full object-cover lg:h-[28rem]"
-                />
-              </div>
-            </div>
+            <PhotoWithBackdrop
+              src="/images/whyus.webp"
+              alt="The Movers To Go crew in front of their moving truck"
+              imgClassName="h-80 w-full object-cover lg:h-[28rem]"
+            />
           </div>
         </section>
 
         {/* Services */}
-        <section id="services" className="relative scroll-mt-24 overflow-hidden border-b border-border bg-surface">
+        <section
+          id="services"
+          className="relative scroll-mt-24 overflow-hidden border-b border-border bg-surface"
+        >
           <img
             src="/images/herocontact.webp"
             alt=""
@@ -538,9 +539,7 @@ function Index() {
           <div aria-hidden="true" className="absolute inset-0 bg-surface/60" />
           <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-24">
             <div>
-              <h2 className="section-heading">
-                Moving Services in Philadelphia
-              </h2>
+              <h2 className="section-heading">Moving Services in Philadelphia</h2>
               <p className="mt-3 max-w-2xl text-foreground">
                 Reliable moving services for homes, apartments, and businesses throughout
                 Philadelphia and surrounding areas.
@@ -551,13 +550,13 @@ function Index() {
               {services.map((service) => (
                 <article
                   key={service.title}
-                  className="relative flex flex-col overflow-hidden rounded-2xl border border-border bg-background p-6 shadow-sm transition-all hover:-translate-y-1 hover:border-[#011936] hover:shadow-lg"
+                  className="relative flex flex-col overflow-hidden rounded-2xl border border-border bg-background p-6 shadow-sm transition-all hover:-translate-y-1 hover:border-[#3C0B68] hover:shadow-lg"
                 >
                   <div className="flex items-center gap-4">
-                    <span className="grid h-20 w-20 shrink-0 place-items-center rounded-full border-2 border-[#011936] bg-white">
+                    <span className="grid h-20 w-20 shrink-0 place-items-center rounded-full border-2 border-[#3C0B68] bg-white">
                       <span
                         aria-hidden="true"
-                        className="h-12 w-12 bg-[#011936]"
+                        className="h-12 w-12 bg-[#3C0B68]"
                         style={{
                           maskImage: `url(${service.iconSrc})`,
                           maskSize: "contain",
@@ -580,7 +579,10 @@ function Index() {
                   >
                     Get Quote
                   </Link>
-                  <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-1.5 bg-[#011936]" />
+                  <span
+                    aria-hidden="true"
+                    className="absolute inset-x-0 bottom-0 h-1.5 bg-[#3C0B68]"
+                  />
                 </article>
               ))}
             </div>
@@ -588,7 +590,10 @@ function Index() {
         </section>
 
         {/* How it works */}
-        <section id="how-it-works" className="relative scroll-mt-24 overflow-hidden border-b border-border">
+        <section
+          id="how-it-works"
+          className="relative scroll-mt-24 overflow-hidden border-b border-border"
+        >
           <img
             src="/images/dot-blob.svg"
             alt=""
@@ -596,9 +601,7 @@ function Index() {
             className="pointer-events-none absolute -top-20 -right-20 z-0 h-[280px] w-[280px] select-none sm:-top-24 sm:-right-24 sm:h-[360px] sm:w-[360px]"
           />
           <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-24">
-            <h2 className="section-heading max-w-2xl">
-              Moving made easy with our 3-step process
-            </h2>
+            <h2 className="section-heading max-w-2xl">Moving made easy with our 3-step process</h2>
             <p className="mt-4 max-w-2xl text-foreground">
               From your first call to the last box unpacked, here&rsquo;s exactly what to expect.
             </p>
@@ -611,25 +614,19 @@ function Index() {
                     key={step.title}
                     className={`flex flex-col gap-8 lg:flex-row lg:items-center lg:gap-16 ${reversed ? "lg:flex-row-reverse" : ""}`}
                   >
-                    <div className="relative lg:w-2/5 lg:shrink-0">
-                      <div
+                    <PhotoWithBackdrop
+                      className="lg:w-2/5 lg:shrink-0"
+                      src={step.image}
+                      alt={step.alt}
+                      imgClassName="h-64 w-full object-cover sm:h-80 lg:h-96"
+                    >
+                      <span
                         aria-hidden="true"
-                        className="absolute -top-4 -right-4 h-full w-full rounded-2xl bg-[#011936] sm:-top-6 sm:-right-6"
-                      />
-                      <div className="relative overflow-hidden rounded-2xl shadow-lg">
-                        <img
-                          src={step.image}
-                          alt={step.alt}
-                          className="h-64 w-full object-cover sm:h-80 lg:h-96"
-                        />
-                        <span
-                          aria-hidden="true"
-                          className="absolute top-0 left-0 grid h-14 w-14 place-items-center rounded-tl-2xl bg-brand font-display text-3xl font-extrabold text-white"
-                        >
-                          {index + 1}
-                        </span>
-                      </div>
-                    </div>
+                        className="absolute top-0 left-0 grid h-14 w-14 place-items-center rounded-tl-2xl bg-brand font-display text-3xl font-extrabold text-white"
+                      >
+                        {index + 1}
+                      </span>
+                    </PhotoWithBackdrop>
                     <div className="flex flex-col justify-center">
                       <h3 className="font-display text-xl font-extrabold sm:text-2xl">
                         {step.title}
@@ -654,18 +651,13 @@ function Index() {
         </section>
 
         {/* Reviews */}
-        <section id="reviews" className="relative scroll-mt-24 overflow-hidden border-b border-border bg-surface">
-          <img
-            src="/images/pattern-background.webp"
-            alt=""
-            aria-hidden="true"
-            className="absolute inset-0 h-full w-full object-cover opacity-50"
-          />
+        <section
+          id="reviews"
+          className="relative scroll-mt-24 overflow-hidden border-b border-border bg-[#3C0B68]"
+        >
           <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-24">
-            <h2 className="section-heading">
-              Trusted by Philadelphia Customers
-            </h2>
-            <p className="mt-4 max-w-2xl text-foreground">
+            <h2 className="section-heading text-white">Trusted by Philadelphia Customers</h2>
+            <p className="mt-4 max-w-2xl text-white/80">
               See what our customers say about moving with Movers To Go.
             </p>
 
@@ -729,7 +721,10 @@ function Index() {
         </section>
 
         {/* Service Area */}
-        <section id="service-area" className="relative scroll-mt-24 overflow-hidden border-b border-border">
+        <section
+          id="service-area"
+          className="relative scroll-mt-24 overflow-hidden border-b border-border"
+        >
           <img
             src="/images/dot-blob.svg"
             alt=""
@@ -806,24 +801,15 @@ function Index() {
             className="pointer-events-none absolute -top-16 -right-16 z-0 h-[260px] w-[260px] select-none sm:-top-20 sm:-right-20 sm:h-[340px] sm:w-[340px]"
           />
           <div className="relative mx-auto grid max-w-6xl items-start gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-20 lg:py-24">
-            <div className="relative lg:sticky lg:top-28">
-              <div
-                aria-hidden="true"
-                className="absolute -top-4 -right-4 h-full w-full rounded-2xl bg-[#011936] sm:-top-6 sm:-right-6"
-              />
-              <div className="relative overflow-hidden rounded-2xl shadow-lg">
-                <img
-                  src="/images/gallary/philadelphia-movers-team-moving-trucks.webp"
-                  alt="Movers To Go team member answering a customer's questions"
-                  className="h-64 w-full object-cover sm:h-80 lg:h-[32rem]"
-                />
-              </div>
-            </div>
+            <PhotoWithBackdrop
+              className="lg:sticky lg:top-28"
+              src="/images/gallary/philadelphia-movers-team-moving-trucks.webp"
+              alt="Movers To Go team member answering a customer's questions"
+              imgClassName="h-64 w-full object-cover sm:h-80 lg:h-[32rem]"
+            />
 
             <div>
-              <h2 className="section-heading">
-                Frequently Asked Questions
-              </h2>
+              <h2 className="section-heading">Frequently Asked Questions</h2>
               <p className="mt-3 text-foreground">
                 Everything Philadelphia customers ask before booking a move.
               </p>
@@ -834,7 +820,7 @@ function Index() {
                     value={`faq-${index}`}
                     className="border-b border-border"
                   >
-                    <AccordionTrigger className="text-left font-display text-2xl font-bold hover:no-underline focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none">
+                    <AccordionTrigger className="text-left font-display text-2xl font-bold hover:no-underline">
                       {item.q}
                     </AccordionTrigger>
                     <AccordionContent className="text-base text-foreground">
@@ -848,7 +834,7 @@ function Index() {
         </section>
 
         {/* Final CTA */}
-        <section className="relative overflow-hidden bg-[#011936] py-16 sm:py-20">
+        <section className="relative overflow-hidden bg-[#3C0B68] py-16 sm:py-20">
           <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6">
             <h2 className="font-display text-4xl font-extrabold text-white sm:text-5xl">
               Ready to Make Your Move?
@@ -860,7 +846,7 @@ function Index() {
               <Link
                 to="/contact"
                 aria-label="Check your moving rate"
-                className="inline-flex items-center justify-center rounded-lg bg-brand px-8 py-4 text-base font-bold tracking-wide text-white uppercase shadow-md shadow-brand/30 transition-all hover:opacity-90 active:scale-95 focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-[#011936] focus-visible:outline-none"
+                className="inline-flex items-center justify-center rounded-lg bg-brand px-8 py-4 text-base font-bold tracking-wide text-white uppercase shadow-md shadow-brand/30 transition-all hover:opacity-90 active:scale-95 focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-[#3C0B68] focus-visible:outline-none"
               >
                 Check Your Rate
               </Link>

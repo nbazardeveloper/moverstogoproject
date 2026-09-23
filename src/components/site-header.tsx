@@ -30,7 +30,7 @@ export function SiteHeader() {
           <Link
             to="/"
             aria-label="Movers To Go home"
-            className="flex min-w-0 items-center py-4 focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none sm:py-5"
+            className="flex min-w-0 items-center py-4 sm:py-5"
           >
             <img
               src="/images/logo1.webp"
@@ -45,7 +45,7 @@ export function SiteHeader() {
                 key={link.label}
                 to={link.to}
                 hash={link.hash}
-                className="rounded-md font-display text-base font-bold tracking-wide text-foreground uppercase transition-colors hover:text-brand focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none"
+                className="rounded-md font-display text-base font-bold tracking-wide text-foreground uppercase transition-colors hover:text-brand"
               >
                 {link.label}
               </Link>
@@ -56,7 +56,7 @@ export function SiteHeader() {
             <a
               href={site.phoneHref}
               aria-label={`Call Movers To Go at ${site.phoneDisplay}`}
-              className="hidden items-center gap-2 rounded-md px-2 py-2 text-base font-semibold text-foreground transition-colors hover:text-brand focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none sm:inline-flex"
+              className="hidden items-center gap-2 rounded-md px-2 py-2 text-base font-semibold text-foreground transition-colors hover:text-brand sm:inline-flex"
             >
               <Smartphone aria-hidden="true" className="h-4 w-4" />
               {site.phoneDisplay}
@@ -72,7 +72,7 @@ export function SiteHeader() {
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger
                 aria-label="Open menu"
-                className="inline-flex h-10 w-10 items-center justify-center text-foreground transition-colors hover:bg-surface focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none xl:hidden"
+                className="inline-flex h-10 w-10 items-center justify-center text-foreground transition-colors hover:bg-surface xl:hidden"
               >
                 <Menu aria-hidden="true" className="h-5 w-5" />
               </SheetTrigger>
@@ -87,7 +87,7 @@ export function SiteHeader() {
                         to={link.to}
                         hash={link.hash}
                         onClick={() => setOpen(false)}
-                        className="rounded-md px-3 py-3 font-display text-base font-bold tracking-wide text-foreground uppercase transition-colors hover:bg-surface focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none"
+                        className="rounded-md px-3 py-3 font-display text-base font-bold tracking-wide text-foreground uppercase transition-colors hover:bg-surface"
                       >
                         {link.label}
                       </Link>
@@ -96,7 +96,7 @@ export function SiteHeader() {
                   <a
                     href={site.phoneHref}
                     aria-label={`Call Movers To Go at ${site.phoneDisplay}`}
-                    className="mt-2 inline-flex items-center gap-2 rounded-md px-3 py-3 text-base font-semibold text-foreground transition-colors hover:bg-surface focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none"
+                    className="mt-2 inline-flex items-center gap-2 rounded-md px-3 py-3 text-base font-semibold text-foreground transition-colors hover:bg-surface"
                   >
                     <Smartphone aria-hidden="true" className="h-4 w-4" />
                     {site.phoneDisplay}
@@ -107,7 +107,7 @@ export function SiteHeader() {
           </div>
         </div>
       </div>
-      <div aria-hidden="true" className="h-3 w-full bg-[#011936]" />
+      <div aria-hidden="true" className="h-3 w-full bg-[#3C0B68]" />
     </header>
   );
 }

@@ -162,16 +162,31 @@ export function QuoteForm() {
   if (step === 2) {
     return (
       <div className="relative left-1/2 w-screen max-w-none -translate-x-1/2 px-4 sm:px-6">
-        <div className="mx-auto max-w-4xl">
-          <h2 className="font-display text-3xl font-extrabold tracking-wide uppercase sm:text-4xl">
+        <div className="mx-auto max-w-4xl rounded-2xl bg-background p-6 shadow-2xl shadow-foreground/30 sm:p-10">
+          <div className="text-center">
+            <h3 className="font-display text-4xl font-extrabold sm:text-5xl">
+              Thanks, {form.full_name.split(" ")[0]}! 🎉
+            </h3>
+            <p className="mt-3 text-lg text-foreground">
+              Your move request has been received. Our team will contact you shortly to confirm your
+              move details.
+            </p>
+            <p className="mt-5 inline-block rounded-lg bg-surface px-5 py-3 text-lg text-foreground">
+              Based on your selections, we recommend{" "}
+              <span className="font-bold text-brand">{crewSize} movers</span> for the most efficient
+              and safe move.
+            </p>
+          </div>
+
+          <h2 className="mt-10 border-t border-border pt-10 font-display text-3xl font-extrabold tracking-wide uppercase sm:text-4xl">
             Basic Packing Includes
           </h2>
           <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {packingRates.map((rate) => (
               <div
                 key={rate.movers}
-                className={`rounded-xl border-2 p-6 text-center transition-all ${
-                  rate.movers === crewSize ? "border-brand bg-brand/5 shadow-md" : "border-border"
+                className={`rounded-xl border-2 bg-background p-6 text-center shadow-sm transition-all ${
+                  rate.movers === crewSize ? "border-brand shadow-md" : "border-border"
                 }`}
               >
                 <span className="mb-3 flex items-center justify-center gap-1.5 text-brand">
@@ -212,26 +227,11 @@ export function QuoteForm() {
             Cash price is available when paying in cash on the day of your move.
           </p>
 
-          <div className="mt-10 border-t border-border pt-10 text-center">
-            <h3 className="font-display text-4xl font-extrabold sm:text-5xl">
-              Thanks, {form.full_name.split(" ")[0]}! 🎉
-            </h3>
-            <p className="mt-3 text-lg text-foreground">
-              Your move request has been received. Our team will contact you shortly to confirm your
-              move details.
-            </p>
-            <p className="mt-5 inline-block rounded-lg bg-surface px-5 py-3 text-lg text-foreground">
-              Based on your selections, we recommend{" "}
-              <span className="font-bold text-brand">{crewSize} movers</span> for the most efficient
-              and safe move.
-            </p>
-          </div>
-
           <div className="mt-10 grid gap-4 border-t border-border pt-8 sm:grid-cols-2">
             <a
               href={site.phoneHref}
               aria-label={`Call Movers To Go at ${site.phoneDisplay}`}
-              className="flex items-center gap-2 rounded-md text-lg font-semibold text-foreground transition-colors hover:text-brand focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none"
+              className="flex items-center gap-2 rounded-md text-lg font-semibold text-foreground transition-colors hover:text-brand"
             >
               <Phone aria-hidden className="h-5 w-5 text-brand" />
               {site.phoneDisplay}
@@ -239,7 +239,7 @@ export function QuoteForm() {
             <a
               href={site.emailHref}
               aria-label={`Email Movers To Go at ${site.email}`}
-              className="flex items-center gap-2 rounded-md text-lg font-semibold text-foreground transition-colors hover:text-brand focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none"
+              className="flex items-center gap-2 rounded-md text-lg font-semibold text-foreground transition-colors hover:text-brand"
             >
               <Mail aria-hidden className="h-5 w-5 text-brand" />
               {site.email}
@@ -264,7 +264,7 @@ export function QuoteForm() {
           <button
             type="button"
             onClick={startOver}
-            className="mt-10 w-full rounded-lg border border-border px-5 py-4 text-base font-bold tracking-wide text-foreground uppercase transition-colors hover:border-brand hover:text-brand focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none"
+            className="mt-10 w-full rounded-lg border border-border px-5 py-4 text-base font-bold tracking-wide text-foreground uppercase transition-colors hover:border-brand hover:text-brand"
           >
             Submit Another Request
           </button>
@@ -274,126 +274,140 @@ export function QuoteForm() {
   }
 
   return (
-    <form
-      onSubmit={onSubmit}
-      noValidate
-      aria-label="Get your move quote"
-      className="bg-transparent sm:rounded-2xl sm:bg-background sm:p-10 sm:shadow-2xl sm:shadow-foreground/30"
-    >
-      <div className="space-y-3">
-        <FieldRow icon={User} label="Your Name" htmlFor="full_name" error={errors.full_name}>
-          <input
-            id="full_name"
-            name="full_name"
-            type="text"
-            autoComplete="name"
-            required
-            aria-required="true"
-            aria-invalid={Boolean(errors.full_name)}
-            aria-describedby={errors.full_name ? "full_name-error" : undefined}
-            placeholder="Enter your name"
-            value={form.full_name}
-            onChange={(e) => update("full_name", e.target.value)}
-            className={inputClass}
-          />
-        </FieldRow>
-
-        <FieldRow icon={MapPin} label="Moving From" htmlFor="zip_from" error={errors.zip_from}>
-          <input
-            id="zip_from"
-            name="zip_from"
-            type="text"
-            inputMode="numeric"
-            maxLength={5}
-            required
-            aria-required="true"
-            placeholder="ZIP Code"
-            value={form.zip_from}
-            onChange={(e) => update("zip_from", e.target.value.replace(/\D/g, ""))}
-            className={inputClass}
-          />
-        </FieldRow>
-
-        <FieldRow icon={MapPin} label="Moving To" htmlFor="zip_to" error={errors.zip_to}>
-          <input
-            id="zip_to"
-            name="zip_to"
-            type="text"
-            inputMode="numeric"
-            maxLength={5}
-            required
-            aria-required="true"
-            placeholder="ZIP Code"
-            value={form.zip_to}
-            onChange={(e) => update("zip_to", e.target.value.replace(/\D/g, ""))}
-            className={inputClass}
-          />
-        </FieldRow>
-
-        <FieldRow icon={Package} label="Move Size" htmlFor="move_size" error={errors.move_size}>
-          <Select value={form.move_size} onValueChange={(value) => update("move_size", value)}>
-            <SelectTrigger
-              id="move_size"
-              aria-label="Move size"
-              aria-required="true"
-              className="h-auto w-full border-0 bg-transparent p-0 text-base text-foreground shadow-none focus:ring-0 sm:text-lg"
-            >
-              <SelectValue placeholder="Select move size" />
-            </SelectTrigger>
-            <SelectContent>
-              {moveSizes.map((size) => (
-                <SelectItem key={size} value={size}>
-                  {size}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </FieldRow>
-
-        <FieldRow icon={Phone} label="Phone Number" htmlFor="phone" error={errors.phone}>
-          <input
-            id="phone"
-            name="phone"
-            type="tel"
-            autoComplete="tel"
-            required
-            aria-required="true"
-            placeholder="Enter your phone number"
-            value={form.phone}
-            onChange={(e) => update("phone", e.target.value)}
-            className={inputClass}
-          />
-        </FieldRow>
-
-        <FieldRow icon={Mail} label="Email Address" htmlFor="email" error={errors.email}>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            autoComplete="email"
-            required
-            aria-required="true"
-            placeholder="Enter your email"
-            value={form.email}
-            onChange={(e) => update("email", e.target.value)}
-            className={inputClass}
-          />
-        </FieldRow>
+    <div>
+      <div className="text-center">
+        <h1 className="font-display text-5xl leading-[1.05] font-extrabold sm:text-6xl">
+          Get Your
+          <br />
+          Move Quote
+        </h1>
+        <span aria-hidden="true" className="mx-auto mt-3 block h-1 w-16 rounded-full bg-brand" />
+        <p className="mt-5 text-base text-foreground sm:text-lg">
+          To get your free quote with a guaranteed hourly rate, please fill out the form below.
+        </p>
       </div>
 
-      <button
-        type="submit"
-        disabled={submitting}
-        aria-label="Get my quote"
-        className="mt-6 flex w-full items-center justify-center gap-2 rounded-lg bg-brand px-5 py-3.5 text-base font-bold tracking-wide text-white uppercase shadow-md shadow-brand/30 transition-all hover:opacity-90 active:scale-[0.98] disabled:opacity-60 focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:outline-none"
+      <form
+        onSubmit={onSubmit}
+        noValidate
+        aria-label="Get your move quote"
+        className="mt-10 rounded-2xl bg-background p-6 shadow-2xl shadow-foreground/30 sm:p-10"
       >
-        {submitting ? "Sending…" : "Get My Quote"}
-        <ArrowRight aria-hidden className="h-4 w-4" />
-      </button>
-      <p className="mt-3 flex items-center justify-center gap-1.5 text-center text-xs text-foreground/70">
-        <Lock aria-hidden className="h-3.5 w-3.5" />
-        Your information is secure and will only be used to provide your moving quote.
-      </p>
-    </form>
+        <div className="space-y-3">
+          <FieldRow icon={User} label="Your Name" htmlFor="full_name" error={errors.full_name}>
+            <input
+              id="full_name"
+              name="full_name"
+              type="text"
+              autoComplete="name"
+              required
+              aria-required="true"
+              aria-invalid={Boolean(errors.full_name)}
+              aria-describedby={errors.full_name ? "full_name-error" : undefined}
+              placeholder="Enter your name"
+              value={form.full_name}
+              onChange={(e) => update("full_name", e.target.value)}
+              className={inputClass}
+            />
+          </FieldRow>
+
+          <FieldRow icon={MapPin} label="Moving From" htmlFor="zip_from" error={errors.zip_from}>
+            <input
+              id="zip_from"
+              name="zip_from"
+              type="text"
+              inputMode="numeric"
+              maxLength={5}
+              required
+              aria-required="true"
+              placeholder="ZIP Code"
+              value={form.zip_from}
+              onChange={(e) => update("zip_from", e.target.value.replace(/\D/g, ""))}
+              className={inputClass}
+            />
+          </FieldRow>
+
+          <FieldRow icon={MapPin} label="Moving To" htmlFor="zip_to" error={errors.zip_to}>
+            <input
+              id="zip_to"
+              name="zip_to"
+              type="text"
+              inputMode="numeric"
+              maxLength={5}
+              required
+              aria-required="true"
+              placeholder="ZIP Code"
+              value={form.zip_to}
+              onChange={(e) => update("zip_to", e.target.value.replace(/\D/g, ""))}
+              className={inputClass}
+            />
+          </FieldRow>
+
+          <FieldRow icon={Package} label="Move Size" htmlFor="move_size" error={errors.move_size}>
+            <Select value={form.move_size} onValueChange={(value) => update("move_size", value)}>
+              <SelectTrigger
+                id="move_size"
+                aria-label="Move size"
+                aria-required="true"
+                className="h-auto w-full border-0 bg-transparent p-0 text-base text-foreground shadow-none focus:ring-0 sm:text-lg"
+              >
+                <SelectValue placeholder="Select move size" />
+              </SelectTrigger>
+              <SelectContent>
+                {moveSizes.map((size) => (
+                  <SelectItem key={size} value={size}>
+                    {size}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </FieldRow>
+
+          <FieldRow icon={Phone} label="Phone Number" htmlFor="phone" error={errors.phone}>
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
+              autoComplete="tel"
+              required
+              aria-required="true"
+              placeholder="Enter your phone number"
+              value={form.phone}
+              onChange={(e) => update("phone", e.target.value)}
+              className={inputClass}
+            />
+          </FieldRow>
+
+          <FieldRow icon={Mail} label="Email Address" htmlFor="email" error={errors.email}>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autoComplete="email"
+              required
+              aria-required="true"
+              placeholder="Enter your email"
+              value={form.email}
+              onChange={(e) => update("email", e.target.value)}
+              className={inputClass}
+            />
+          </FieldRow>
+        </div>
+
+        <button
+          type="submit"
+          disabled={submitting}
+          aria-label="Get my quote"
+          className="mt-6 flex w-full items-center justify-center gap-2 rounded-lg bg-brand px-5 py-3.5 text-base font-bold tracking-wide text-white uppercase shadow-md shadow-brand/30 transition-all hover:opacity-90 active:scale-[0.98] disabled:opacity-60 focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:outline-none"
+        >
+          {submitting ? "Sending…" : "Get My Quote"}
+          <ArrowRight aria-hidden className="h-4 w-4" />
+        </button>
+        <p className="mt-3 flex items-center justify-center gap-1.5 text-center text-xs text-foreground/70">
+          <Lock aria-hidden className="h-3.5 w-3.5" />
+          Your information is secure and will only be used to provide your moving quote.
+        </p>
+      </form>
+    </div>
   );
 }

@@ -207,7 +207,7 @@ function ServicesCoverage() {
               <a
                 href={site.phoneHref}
                 aria-label={`Call Movers To Go at ${site.phoneDisplay}`}
-                className="font-semibold underline hover:text-brand focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none"
+                className="font-semibold underline hover:text-brand"
               >
                 {site.phoneDisplay}
               </a>{" "}
@@ -215,7 +215,7 @@ function ServicesCoverage() {
               <a
                 href={site.emailHref}
                 aria-label={`Email Movers To Go at ${site.email}`}
-                className="font-semibold underline hover:text-brand focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none"
+                className="font-semibold underline hover:text-brand"
               >
                 {site.email}
               </a>

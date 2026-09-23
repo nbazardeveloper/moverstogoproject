@@ -2,9 +2,12 @@ import { Link } from "@tanstack/react-router";
 import { Mail, MapPin, Smartphone } from "lucide-react";
 import { site } from "@/data/site";
 
+const footerLinkClass = "rounded-md text-neutral-300 hover:text-brand";
+const legalLinkClass = "rounded-md hover:text-brand";
+
 export function SiteFooter() {
   return (
-    <footer className="border-t-2 border-brand bg-[#011936]">
+    <footer className="border-t-2 border-brand bg-[#3C0B68]">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-2 lg:grid-cols-4">
         <div>
           <img src="/images/logo.webp" alt="Movers To Go" className="h-9 w-auto" />
@@ -19,36 +22,22 @@ export function SiteFooter() {
           </h2>
           <ul className="mt-4 space-y-3 text-base">
             <li>
-              <Link
-                to="/"
-                className="rounded-md text-neutral-300 hover:text-brand focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none"
-              >
+              <Link to="/" className={footerLinkClass}>
                 Home
               </Link>
             </li>
             <li>
-              <Link
-                to="/"
-                hash="services"
-                className="rounded-md text-neutral-300 hover:text-brand focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none"
-              >
+              <Link to="/" hash="services" className={footerLinkClass}>
                 Services
               </Link>
             </li>
             <li>
-              <Link
-                to="/"
-                hash="service-area"
-                className="rounded-md text-neutral-300 hover:text-brand focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none"
-              >
+              <Link to="/" hash="service-area" className={footerLinkClass}>
                 Service Areas
               </Link>
             </li>
             <li>
-              <Link
-                to="/contact"
-                className="rounded-md text-neutral-300 hover:text-brand focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none"
-              >
+              <Link to="/contact" className={footerLinkClass}>
                 Check Your Rate
               </Link>
             </li>
@@ -64,7 +53,7 @@ export function SiteFooter() {
               <a
                 href={site.phoneHref}
                 aria-label={`Call Movers To Go at ${site.phoneDisplay}`}
-                className="inline-flex items-center gap-2 rounded-md font-semibold text-white hover:text-brand focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none"
+                className="inline-flex items-center gap-2 rounded-md font-semibold text-white hover:text-brand"
               >
                 <Smartphone aria-hidden="true" className="h-4 w-4" />
                 {site.phoneDisplay}
@@ -74,7 +63,7 @@ export function SiteFooter() {
               <a
                 href={site.emailHref}
                 aria-label={`Email Movers To Go at ${site.email}`}
-                className="inline-flex items-center gap-2 rounded-md text-neutral-300 hover:text-brand focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none"
+                className={`inline-flex items-center gap-2 ${footerLinkClass}`}
               >
                 <Mail aria-hidden="true" className="h-4 w-4" />
                 {site.email}
@@ -109,16 +98,10 @@ export function SiteFooter() {
             © {new Date().getFullYear()} {site.name}. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
-            <Link
-              to="/privacy-policy"
-              className="rounded-md hover:text-brand focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none"
-            >
+            <Link to="/privacy-policy" className={legalLinkClass}>
               Privacy Policy
             </Link>
-            <Link
-              to="/terms-of-use"
-              className="rounded-md hover:text-brand focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none"
-            >
+            <Link to="/terms-of-use" className={legalLinkClass}>
               Terms of Use
             </Link>
           </div>
