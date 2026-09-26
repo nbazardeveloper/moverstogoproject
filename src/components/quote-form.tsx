@@ -43,6 +43,7 @@ const emptyForm: FormState = {
 };
 
 const crewSize = crewOptions[0].movers;
+const recommendedRate = packingRates.find((rate) => rate.movers === crewSize) ?? packingRates[0];
 
 function FieldRow({
   icon: Icon,
@@ -163,22 +164,7 @@ export function QuoteForm() {
     return (
       <div className="relative left-1/2 w-screen max-w-none -translate-x-1/2 px-4 sm:px-6">
         <div className="mx-auto max-w-4xl rounded-2xl bg-background p-6 shadow-2xl shadow-foreground/30 sm:p-10">
-          <div className="text-center">
-            <h3 className="font-display text-4xl font-extrabold sm:text-5xl">
-              Thanks, {form.full_name.split(" ")[0]}! 🎉
-            </h3>
-            <p className="mt-3 text-lg text-foreground">
-              Your move request has been received. Our team will contact you shortly to confirm your
-              move details.
-            </p>
-            <p className="mt-5 inline-block rounded-lg bg-surface px-5 py-3 text-lg text-foreground">
-              Based on your selections, we recommend{" "}
-              <span className="font-bold text-brand">{crewSize} movers</span> for the most efficient
-              and safe move.
-            </p>
-          </div>
-
-          <h2 className="mt-10 border-t border-border pt-10 font-display text-3xl font-extrabold tracking-wide uppercase sm:text-4xl">
+          <h2 className="font-display text-3xl font-extrabold tracking-wide uppercase sm:text-4xl">
             Basic Packing Includes
           </h2>
           <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -226,6 +212,50 @@ export function QuoteForm() {
           <p className="mt-4 text-base text-foreground/70">
             Cash price is available when paying in cash on the day of your move.
           </p>
+
+          <div className="mt-10 border-t border-border pt-10 text-center">
+            <h3 className="font-display text-4xl font-extrabold sm:text-5xl">
+              Thanks, {form.full_name.split(" ")[0]}! 🎉
+            </h3>
+            <p className="mt-3 text-lg text-foreground">
+              Your move request has been received. Our team will contact you shortly to confirm your
+              move details.
+            </p>
+
+            <div className="mt-6 grid grid-cols-1 divide-y divide-border rounded-xl border border-border bg-brand/5 text-left sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+              <div className="flex items-center gap-3 p-4">
+                <Truck aria-hidden className="h-8 w-8 shrink-0 text-brand" />
+                <div>
+                  <p className="text-xs font-bold tracking-wide text-brand uppercase">
+                    Recommended for your move
+                  </p>
+                  <p className="font-display text-lg font-extrabold tracking-wide uppercase">
+                    {crewSize} Movers and Truck
+                  </p>
+                </div>
+              </div>
+              <div className="p-4 text-center sm:text-left">
+                <p className="text-xs font-bold tracking-wide text-foreground/70 uppercase">
+                  Cash Price
+                </p>
+                <p className="font-display text-3xl font-extrabold text-brand">
+                  ${recommendedRate.cash}
+                  <span className="text-base font-bold">/hr</span>
+                </p>
+                <p className="text-xs text-foreground/60">when paying in cash</p>
+              </div>
+              <div className="p-4 text-center sm:text-left">
+                <p className="text-xs font-bold tracking-wide text-foreground/70 uppercase">
+                  Card Price
+                </p>
+                <p className="font-display text-2xl font-extrabold">
+                  ${recommendedRate.card}
+                  <span className="text-sm font-bold">/hr</span>
+                </p>
+                <p className="text-xs text-foreground/60">when paying by card</p>
+              </div>
+            </div>
+          </div>
 
           <div className="mt-10 grid gap-4 border-t border-border pt-8 sm:grid-cols-2">
             <a
@@ -276,13 +306,13 @@ export function QuoteForm() {
   return (
     <div>
       <div className="text-center">
-        <h1 className="font-display text-5xl leading-[1.05] font-extrabold sm:text-6xl">
+        <h1 className="font-display text-5xl leading-[1.05] font-extrabold text-white sm:text-6xl">
           Get Your
           <br />
           Move Quote
         </h1>
         <span aria-hidden="true" className="mx-auto mt-3 block h-1 w-16 rounded-full bg-brand" />
-        <p className="mt-5 text-base text-foreground sm:text-lg">
+        <p className="mt-5 text-base text-white/80 sm:text-lg">
           To get your free quote with a guaranteed hourly rate, please fill out the form below.
         </p>
       </div>

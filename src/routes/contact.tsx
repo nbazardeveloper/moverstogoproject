@@ -34,12 +34,7 @@ function Contact() {
       <SiteHeader />
 
       <main>
-        <section className="relative isolate overflow-hidden bg-surface sm:bg-[linear-gradient(to_right,rgba(255,255,255,0.9),rgba(255,255,255,0.5)_40%,rgba(255,255,255,0.2)_100%),url('/images/herocontact.webp')] sm:bg-cover sm:bg-fixed sm:bg-right">
-          <div
-            aria-hidden="true"
-            className="absolute inset-x-0 bottom-0 h-[480px] bg-[linear-gradient(to_bottom,rgba(255,255,255,1)_0%,rgba(255,255,255,0.25)_25%,rgba(255,255,255,0.1)_100%),url('/images/herocaontactmobil.webp')] bg-cover bg-bottom sm:hidden"
-          />
-
+        <section className="relative isolate overflow-hidden bg-[#3C0B68]">
           <div className="relative mx-auto max-w-2xl px-4 py-16 sm:px-6 lg:py-20">
             <QuoteForm />
           </div>
