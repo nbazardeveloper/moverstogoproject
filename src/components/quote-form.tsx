@@ -42,8 +42,16 @@ const emptyForm: FormState = {
   zip_to: "",
 };
 
-const crewSize = crewOptions[0].movers;
-const recommendedRate = packingRates.find((rate) => rate.movers === crewSize) ?? packingRates[0];
+// Recommended crew size per move size, shown on the confirmation step.
+const moveSizeToCrewSize: Record<string, number> = {
+  Studio: 1,
+  "1 Bedroom": 2,
+  "2 Bedroom": 2,
+  "3 Bedroom": 3,
+  "4+ Bedroom / House": 4,
+  "Office / Commercial": 4,
+};
+const defaultCrewSize = crewOptions[0].movers;
 
 function FieldRow({
   icon: Icon,
@@ -95,6 +103,9 @@ export function QuoteForm() {
   const [form, setForm] = useState<FormState>(emptyForm);
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
   const [submitting, setSubmitting] = useState(false);
+
+  const crewSize = moveSizeToCrewSize[form.move_size] ?? defaultCrewSize;
+  const recommendedRate = packingRates.find((rate) => rate.movers === crewSize) ?? packingRates[0]!;
 
   const update = (key: keyof FormState, value: string) => {
     setForm((prev) => ({ ...prev, [key]: value }));
