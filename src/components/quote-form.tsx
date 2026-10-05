@@ -174,7 +174,7 @@ export function QuoteForm() {
   if (step === 2) {
     return (
       <div className="relative left-1/2 w-screen max-w-none -translate-x-1/2 px-4 sm:px-6">
-        <div className="mx-auto max-w-4xl rounded-2xl bg-background p-6 shadow-2xl shadow-foreground/30 sm:p-10">
+        <div className="mx-auto max-w-4xl rounded-2xl bg-[#3C0B68] p-6 text-white shadow-2xl shadow-black/40 ring-1 ring-white/15 sm:p-10">
           <h2 className="font-display text-3xl font-extrabold tracking-wide uppercase sm:text-4xl">
             Basic Packing Includes
           </h2>
@@ -182,7 +182,7 @@ export function QuoteForm() {
             {packingRates.map((rate) => (
               <div
                 key={rate.movers}
-                className={`rounded-xl border-2 bg-background p-6 text-center shadow-sm transition-all ${
+                className={`rounded-xl border-2 bg-background p-6 text-foreground text-center shadow-sm transition-all ${
                   rate.movers === crewSize ? "border-brand shadow-md" : "border-border"
                 }`}
               >
@@ -220,20 +220,20 @@ export function QuoteForm() {
               </div>
             ))}
           </div>
-          <p className="mt-4 text-base text-foreground/70">
+          <p className="mt-4 text-base text-white/70">
             Cash price is available when paying in cash on the day of your move.
           </p>
 
-          <div className="mt-10 border-t border-border pt-10 text-center">
+          <div className="mt-10 border-t border-white/20 pt-10 text-center">
             <h3 className="font-display text-4xl font-extrabold sm:text-5xl">
               Thanks, {form.full_name.split(" ")[0]}! 🎉
             </h3>
-            <p className="mt-3 text-lg text-foreground">
+            <p className="mt-3 text-lg text-white">
               Your move request has been received. Our team will contact you shortly to confirm your
               move details.
             </p>
 
-            <div className="mt-6 grid grid-cols-1 divide-y divide-border rounded-xl border border-border bg-brand/5 text-left sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+            <div className="mt-6 grid grid-cols-1 divide-y divide-white/20 rounded-xl border border-white/20 bg-white/10 text-left sm:grid-cols-3 sm:divide-x sm:divide-y-0">
               <div className="flex items-center gap-3 p-4">
                 <Truck aria-hidden className="h-8 w-8 shrink-0 text-brand" />
                 <div>
@@ -246,33 +246,33 @@ export function QuoteForm() {
                 </div>
               </div>
               <div className="p-4 text-center sm:text-left">
-                <p className="text-xs font-bold tracking-wide text-foreground/70 uppercase">
+                <p className="text-xs font-bold tracking-wide text-white/70 uppercase">
                   Cash Price
                 </p>
                 <p className="font-display text-3xl font-extrabold text-brand">
                   ${recommendedRate.cash}
                   <span className="text-base font-bold">/hr</span>
                 </p>
-                <p className="text-xs text-foreground/60">when paying in cash</p>
+                <p className="text-xs text-white/60">when paying in cash</p>
               </div>
               <div className="p-4 text-center sm:text-left">
-                <p className="text-xs font-bold tracking-wide text-foreground/70 uppercase">
+                <p className="text-xs font-bold tracking-wide text-white/70 uppercase">
                   Card Price
                 </p>
                 <p className="font-display text-2xl font-extrabold">
                   ${recommendedRate.card}
                   <span className="text-sm font-bold">/hr</span>
                 </p>
-                <p className="text-xs text-foreground/60">when paying by card</p>
+                <p className="text-xs text-white/60">when paying by card</p>
               </div>
             </div>
           </div>
 
-          <div className="mt-10 grid gap-4 border-t border-border pt-8 sm:grid-cols-2">
+          <div className="mt-10 grid gap-4 border-t border-white/20 pt-8 sm:grid-cols-2">
             <a
               href={site.phoneHref}
               aria-label={`Call Movers To Go at ${site.phoneDisplay}`}
-              className="flex items-center gap-2 rounded-md text-lg font-semibold text-foreground transition-colors hover:text-brand"
+              className="flex items-center gap-2 rounded-md text-lg font-semibold text-white transition-colors hover:text-brand"
             >
               <Phone aria-hidden className="h-5 w-5 text-brand" />
               {site.phoneDisplay}
@@ -280,14 +280,14 @@ export function QuoteForm() {
             <a
               href={site.emailHref}
               aria-label={`Email Movers To Go at ${site.email}`}
-              className="flex items-center gap-2 rounded-md text-lg font-semibold text-foreground transition-colors hover:text-brand"
+              className="flex items-center gap-2 rounded-md text-lg font-semibold text-white transition-colors hover:text-brand"
             >
               <Mail aria-hidden className="h-5 w-5 text-brand" />
               {site.email}
             </a>
           </div>
 
-          <div className="mt-8 flex flex-wrap justify-center gap-x-8 gap-y-3 border-t border-border pt-8 text-base font-semibold text-foreground/70">
+          <div className="mt-8 flex flex-wrap justify-center gap-x-8 gap-y-3 border-t border-white/20 pt-8 text-base font-semibold text-white/70">
             <span className="flex items-center gap-2">
               <ShieldCheck aria-hidden className="h-5 w-5 text-brand" />
               Fully Insured
@@ -305,7 +305,7 @@ export function QuoteForm() {
           <button
             type="button"
             onClick={startOver}
-            className="mt-10 w-full rounded-lg border border-border px-5 py-4 text-base font-bold tracking-wide text-foreground uppercase transition-colors hover:border-brand hover:text-brand"
+            className="mt-10 w-full rounded-lg border border-white/40 px-5 py-4 text-base font-bold tracking-wide text-white uppercase transition-colors hover:border-white hover:text-brand"
           >
             Submit Another Request
           </button>
