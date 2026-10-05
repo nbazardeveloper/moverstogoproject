@@ -528,19 +528,12 @@ function Index() {
         {/* Services */}
         <section
           id="services"
-          className="relative scroll-mt-24 overflow-hidden border-b border-border bg-surface"
+          className="relative scroll-mt-24 overflow-hidden border-b border-border bg-[#3C0B68]"
         >
-          <img
-            src="/images/herocontact.webp"
-            alt=""
-            aria-hidden="true"
-            className="absolute inset-0 h-full w-full object-cover"
-          />
-          <div aria-hidden="true" className="absolute inset-0 bg-surface/60" />
           <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-24">
             <div>
-              <h2 className="section-heading">Moving Services in Philadelphia</h2>
-              <p className="mt-3 max-w-2xl text-foreground">
+              <h2 className="section-heading text-white">Moving Services in Philadelphia</h2>
+              <p className="mt-3 max-w-2xl text-white/80">
                 Reliable moving services for homes, apartments, and businesses throughout
                 Philadelphia and surrounding areas.
               </p>

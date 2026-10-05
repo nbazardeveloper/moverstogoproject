@@ -175,96 +175,98 @@ export function QuoteForm() {
     return (
       <div className="relative left-1/2 w-screen max-w-none -translate-x-1/2 px-4 sm:px-6">
         <div className="mx-auto max-w-4xl rounded-2xl bg-[#3C0B68] p-6 text-white shadow-2xl shadow-black/40 ring-1 ring-white/15 sm:p-10">
-          <h2 className="font-display text-3xl font-extrabold tracking-wide uppercase sm:text-4xl">
-            Basic Packing Includes
-          </h2>
-          <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {packingRates.map((rate) => (
-              <div
-                key={rate.movers}
-                className={`rounded-xl border-2 bg-background p-6 text-foreground text-center shadow-sm transition-all ${
-                  rate.movers === crewSize ? "border-brand shadow-md" : "border-border"
-                }`}
-              >
-                <span className="mb-3 flex items-center justify-center gap-1.5 text-brand">
-                  {Array.from({ length: rate.movers }).map((_, i) => (
-                    <User key={i} className="h-6 w-6" />
-                  ))}
-                  <Truck aria-hidden className="ml-1 h-7 w-7" />
-                </span>
-                <p className="text-lg font-extrabold tracking-wide uppercase">
-                  {rate.movers} Mover{rate.movers > 1 ? "s" : ""} + Truck
-                </p>
-
-                <div className="mt-4 border-t border-border pt-4">
-                  <p className="text-sm font-bold tracking-wide text-foreground/70 uppercase">
-                    Cash Price
-                  </p>
-                  <p className="font-display text-4xl font-extrabold text-brand">
-                    ${rate.cash}
-                    <span className="text-lg font-bold">/hr</span>
-                  </p>
-                  <p className="text-sm text-foreground/60">when paying in cash</p>
-                </div>
-
-                <div className="mt-4 border-t border-border pt-4">
-                  <p className="text-sm font-bold tracking-wide text-foreground/70 uppercase">
-                    Card Price
-                  </p>
-                  <p className="font-display text-2xl font-extrabold">
-                    ${rate.card}
-                    <span className="text-base font-bold">/hr</span>
-                  </p>
-                  <p className="text-sm text-foreground/60">when paying by card</p>
-                </div>
-              </div>
-            ))}
-          </div>
-          <p className="mt-4 text-base text-white/70">
-            Cash price is available when paying in cash on the day of your move.
-          </p>
-
-          <div className="mt-10 border-t border-white/20 pt-10 text-center">
-            <h3 className="font-display text-4xl font-extrabold sm:text-5xl">
+          <div className="text-center">
+            <h2 className="font-display text-4xl font-extrabold sm:text-5xl">
               Thanks, {form.full_name.split(" ")[0]}! 🎉
-            </h3>
+            </h2>
             <p className="mt-3 text-lg text-white">
               Your move request has been received. Our team will contact you shortly to confirm your
               move details.
             </p>
+          </div>
 
-            <div className="mt-6 grid grid-cols-1 divide-y divide-white/20 rounded-xl border border-white/20 bg-white/10 text-left sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-              <div className="flex items-center gap-3 p-4">
-                <Truck aria-hidden className="h-8 w-8 shrink-0 text-brand" />
-                <div>
-                  <p className="text-xs font-bold tracking-wide text-brand uppercase">
-                    Recommended for your move
-                  </p>
-                  <p className="font-display text-lg font-extrabold tracking-wide uppercase">
-                    {crewSize} Movers and Truck
-                  </p>
-                </div>
+          <div className="mt-8 overflow-hidden rounded-xl bg-background text-foreground shadow-lg ring-2 ring-brand">
+            <div className="flex items-center justify-center gap-3 bg-brand px-4 py-3 text-white">
+              <Truck aria-hidden className="h-7 w-7 shrink-0" />
+              <div className="text-left">
+                <p className="text-xs font-bold tracking-wide text-white/90 uppercase">
+                  Recommended for your move
+                </p>
+                <p className="font-display text-lg font-extrabold tracking-wide uppercase">
+                  {crewSize} Movers and Truck
+                </p>
               </div>
-              <div className="p-4 text-center sm:text-left">
-                <p className="text-xs font-bold tracking-wide text-white/70 uppercase">
+            </div>
+            <div className="grid grid-cols-2 divide-x divide-border">
+              <div className="p-4 text-center">
+                <p className="text-xs font-bold tracking-wide text-foreground/70 uppercase">
                   Cash Price
                 </p>
-                <p className="font-display text-3xl font-extrabold text-brand">
+                <p className="font-display text-3xl font-extrabold text-brand sm:text-4xl">
                   ${recommendedRate.cash}
                   <span className="text-base font-bold">/hr</span>
                 </p>
-                <p className="text-xs text-white/60">when paying in cash</p>
+                <p className="text-xs text-foreground/60">when paying in cash</p>
               </div>
-              <div className="p-4 text-center sm:text-left">
-                <p className="text-xs font-bold tracking-wide text-white/70 uppercase">
+              <div className="p-4 text-center">
+                <p className="text-xs font-bold tracking-wide text-foreground/70 uppercase">
                   Card Price
                 </p>
-                <p className="font-display text-2xl font-extrabold">
+                <p className="font-display text-2xl font-extrabold sm:text-3xl">
                   ${recommendedRate.card}
                   <span className="text-sm font-bold">/hr</span>
                 </p>
-                <p className="text-xs text-white/60">when paying by card</p>
+                <p className="text-xs text-foreground/60">when paying by card</p>
               </div>
+            </div>
+          </div>
+          <p className="mt-4 text-center text-base text-white/70">
+            Cash price is available when paying in cash on the day of your move.
+          </p>
+
+          <div className="mt-10 border-t border-white/20 pt-10">
+            <h3 className="font-display text-2xl font-extrabold tracking-wide uppercase sm:text-3xl">
+              Basic Packing Includes
+            </h3>
+            <div className="mt-6 grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
+              {packingRates.map((rate) => (
+                <div
+                  key={rate.movers}
+                  className={`rounded-xl border-2 bg-background p-3 text-center text-foreground shadow-sm transition-all sm:p-6 ${
+                    rate.movers === crewSize ? "border-brand shadow-md" : "border-border"
+                  }`}
+                >
+                  <span className="mb-2 flex items-center justify-center gap-1 text-brand sm:mb-3 sm:gap-1.5">
+                    {Array.from({ length: rate.movers }).map((_, i) => (
+                      <User key={i} className="h-4 w-4 sm:h-6 sm:w-6" />
+                    ))}
+                    <Truck aria-hidden className="ml-1 h-5 w-5 sm:h-7 sm:w-7" />
+                  </span>
+                  <p className="text-sm font-extrabold tracking-wide uppercase sm:text-lg">
+                    {rate.movers} Mover{rate.movers > 1 ? "s" : ""} + Truck
+                  </p>
+
+                  <div className="mt-3 border-t border-border pt-3 sm:mt-4 sm:pt-4">
+                    <p className="text-xs font-bold tracking-wide text-foreground/70 uppercase sm:text-sm">
+                      Cash Price
+                    </p>
+                    <p className="font-display text-2xl font-extrabold text-brand sm:text-4xl">
+                      ${rate.cash}
+                      <span className="text-sm font-bold sm:text-lg">/hr</span>
+                    </p>
+                  </div>
+
+                  <div className="mt-3 border-t border-border pt-3 sm:mt-4 sm:pt-4">
+                    <p className="text-xs font-bold tracking-wide text-foreground/70 uppercase sm:text-sm">
+                      Card Price
+                    </p>
+                    <p className="font-display text-lg font-extrabold sm:text-2xl">
+                      ${rate.card}
+                      <span className="text-xs font-bold sm:text-base">/hr</span>
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
 

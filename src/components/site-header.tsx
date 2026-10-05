@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Menu, Smartphone } from "lucide-react";
+import { Menu, Phone, Smartphone } from "lucide-react";
 import { site } from "@/data/site";
 import {
   Sheet,
@@ -69,12 +69,20 @@ export function SiteHeader() {
               Get Free Quote
             </Link>
 
+            <a
+              href={site.phoneHref}
+              aria-label={`Call Movers To Go at ${site.phoneDisplay}`}
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[#3C0B68] text-brand shadow-md transition-all hover:opacity-90 active:scale-95 sm:hidden"
+            >
+              <Phone aria-hidden="true" className="h-5 w-5" />
+            </a>
+
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger
                 aria-label="Open menu"
-                className="inline-flex h-10 w-10 items-center justify-center text-foreground transition-colors hover:bg-surface xl:hidden"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[#3C0B68] text-brand shadow-md transition-all hover:opacity-90 active:scale-95 xl:hidden"
               >
-                <Menu aria-hidden="true" className="h-5 w-5" />
+                <Menu aria-hidden="true" className="h-6 w-6" />
               </SheetTrigger>
               <SheetContent side="right" className="w-3/4 sm:max-w-xs">
                 <SheetHeader>
