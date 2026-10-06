@@ -347,32 +347,48 @@ function Index() {
               aria-hidden="true"
               className="absolute top-2 -right-2 hidden h-[85%] w-[85%] rounded-2xl bg-[#4C137F]"
             />
+            <div
+              aria-hidden="true"
+              className="absolute -bottom-1 left-[6%] h-[12%] w-[86%] rounded-[50%] bg-black/45 blur-md"
+            />
             <img
               src="/images/truck-transporent.webp"
               alt="Movers To Go moving truck"
-              className="relative h-full w-full object-contain drop-shadow-xl"
+              className="relative h-full w-full object-contain object-bottom drop-shadow-xl"
             />
           </div>
           <div
             aria-hidden="true"
             className="absolute inset-x-6 bottom-0 z-0 hidden h-40 rounded-t-[2.5rem] bg-[#4C137F] sm:hidden"
           />
-          <img
-            src="/images/truck-transporent.webp"
-            alt="Movers To Go moving truck"
-            className="absolute inset-x-0 bottom-0 z-0 mx-auto h-44 w-auto max-w-none object-contain drop-shadow-2xl sm:hidden"
-          />
+          <div className="absolute inset-x-0 bottom-3 z-0 mx-auto w-fit sm:hidden">
+            <div
+              aria-hidden="true"
+              className="absolute -bottom-2 left-[5%] h-6 w-[88%] rounded-[50%] bg-black/45 blur-md"
+            />
+            <img
+              src="/images/truck-transporent.webp"
+              alt="Movers To Go moving truck"
+              className="relative h-44 w-auto max-w-none object-contain drop-shadow-2xl"
+            />
+          </div>
           <div className="relative z-10 mx-auto flex max-w-7xl items-center px-4 pt-24 pb-56 sm:min-h-[529px] sm:px-6 sm:pt-28 sm:pb-14 lg:min-h-[635px] lg:pt-32 lg:pb-20">
             <div className="hidden xl:absolute xl:top-1/2 xl:right-12 xl:block xl:h-[550px] xl:w-[550px] xl:-translate-y-1/2">
               <div
                 aria-hidden="true"
                 className="absolute inset-0 hidden rounded-full bg-[#4C137F]"
               />
-              <img
-                src="/images/truck-transporent.webp"
-                alt="Movers To Go moving truck"
-                className="absolute right-0 bottom-4 h-[443px] w-[634px] max-w-none object-contain drop-shadow-2xl"
-              />
+              <div className="absolute right-0 bottom-[56px] w-[634px]">
+                <div
+                  aria-hidden="true"
+                  className="absolute -bottom-4 left-[5%] h-12 w-[88%] rounded-[50%] bg-black/45 blur-xl"
+                />
+                <img
+                  src="/images/truck-transporent.webp"
+                  alt="Movers To Go moving truck"
+                  className="relative block h-auto w-full max-w-none drop-shadow-2xl"
+                />
+              </div>
             </div>
             <div className="max-w-2xl">
               <h1 className="font-display text-6xl leading-[1.05] font-extrabold tracking-[0.01em] text-white sm:text-6xl lg:text-7xl">
