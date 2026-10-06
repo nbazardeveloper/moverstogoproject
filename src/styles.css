@@ -113,7 +113,7 @@
   /* Homepage/section H2s: size, weight, and brand color in one place. */
   .section-heading {
     @apply font-display text-3xl font-extrabold sm:text-4xl;
-    color: #3c0b68;
+    color: #4c137f;
   }
 }
 

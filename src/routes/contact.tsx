@@ -34,7 +34,7 @@ function Contact() {
       <SiteHeader />
 
       <main>
-        <section className="relative isolate overflow-hidden bg-[#3C0B68]">
+        <section className="relative isolate overflow-hidden bg-[#4C137F]">
           <div className="relative mx-auto max-w-2xl px-4 py-16 sm:px-6 lg:py-20">
             <QuoteForm />
           </div>

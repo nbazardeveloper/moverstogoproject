@@ -22,7 +22,7 @@ export function PhotoWithBackdrop({
     <div className={`relative ${className ?? ""}`}>
       <div
         aria-hidden="true"
-        className="absolute -top-4 -right-4 h-full w-full rounded-2xl bg-[#3C0B68] sm:-top-6 sm:-right-6"
+        className="absolute -top-4 -right-4 h-full w-full rounded-2xl bg-[#4C137F] sm:-top-6 sm:-right-6"
       />
       <div className="relative overflow-hidden rounded-2xl shadow-lg">
         <img src={src} alt={alt} className={imgClassName} />

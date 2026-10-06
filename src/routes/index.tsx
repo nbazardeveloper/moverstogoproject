@@ -329,7 +329,7 @@ function Index() {
 
       <main>
         {/* Hero */}
-        <section className="relative overflow-hidden bg-[#3C0B68] sm:min-h-[529px] lg:min-h-[635px]">
+        <section className="relative overflow-hidden bg-[#4C137F] sm:min-h-[529px] lg:min-h-[635px]">
           <img
             src="/images/dot-blob.svg"
             alt=""
@@ -345,7 +345,7 @@ function Index() {
           <div className="absolute z-10 hidden shrink-0 sm:top-10 sm:right-8 sm:block sm:h-24 sm:w-44 lg:top-1/2 lg:right-12 lg:h-64 lg:w-[360px] lg:-translate-y-1/2 xl:hidden">
             <div
               aria-hidden="true"
-              className="absolute top-2 -right-2 hidden h-[85%] w-[85%] rounded-2xl bg-[#3C0B68]"
+              className="absolute top-2 -right-2 hidden h-[85%] w-[85%] rounded-2xl bg-[#4C137F]"
             />
             <img
               src="/images/truck-transporent.webp"
@@ -355,7 +355,7 @@ function Index() {
           </div>
           <div
             aria-hidden="true"
-            className="absolute inset-x-6 bottom-0 z-0 hidden h-40 rounded-t-[2.5rem] bg-[#3C0B68] sm:hidden"
+            className="absolute inset-x-6 bottom-0 z-0 hidden h-40 rounded-t-[2.5rem] bg-[#4C137F] sm:hidden"
           />
           <img
             src="/images/truck-transporent.webp"
@@ -366,7 +366,7 @@ function Index() {
             <div className="hidden xl:absolute xl:top-1/2 xl:right-12 xl:block xl:h-[550px] xl:w-[550px] xl:-translate-y-1/2">
               <div
                 aria-hidden="true"
-                className="absolute inset-0 hidden rounded-full bg-[#3C0B68]"
+                className="absolute inset-0 hidden rounded-full bg-[#4C137F]"
               />
               <img
                 src="/images/truck-transporent.webp"
@@ -436,7 +436,7 @@ function Index() {
             aria-hidden="true"
             className="pointer-events-none absolute top-8 right-0 z-0 h-64 w-64 translate-x-1/3 select-none sm:h-80 sm:w-80 lg:h-96 lg:w-96 lg:translate-x-1/4"
           />
-          <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-1/2 bg-[#3C0B68]" />
+          <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-1/2 bg-[#4C137F]" />
           <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
             <div aria-hidden="true" className="h-px w-full bg-foreground/10" />
             <h2 className="section-heading mt-10 text-center">Rated 5 Stars by Our Customers</h2>
@@ -528,7 +528,7 @@ function Index() {
         {/* Services */}
         <section
           id="services"
-          className="relative scroll-mt-24 overflow-hidden border-b border-border bg-[#3C0B68]"
+          className="relative scroll-mt-24 overflow-hidden border-b border-border bg-[#4C137F]"
         >
           <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-24">
             <div>
@@ -543,13 +543,13 @@ function Index() {
               {services.map((service) => (
                 <article
                   key={service.title}
-                  className="relative flex flex-col overflow-hidden rounded-2xl border border-border bg-background p-6 shadow-sm transition-all hover:-translate-y-1 hover:border-[#3C0B68] hover:shadow-lg"
+                  className="relative flex flex-col overflow-hidden rounded-2xl border border-border bg-background p-6 shadow-sm transition-all hover:-translate-y-1 hover:border-[#4C137F] hover:shadow-lg"
                 >
                   <div className="flex items-center gap-4">
-                    <span className="grid h-20 w-20 shrink-0 place-items-center rounded-full border-2 border-[#3C0B68] bg-white">
+                    <span className="grid h-20 w-20 shrink-0 place-items-center rounded-full border-2 border-[#4C137F] bg-white">
                       <span
                         aria-hidden="true"
-                        className="h-12 w-12 bg-[#3C0B68]"
+                        className="h-12 w-12 bg-[#4C137F]"
                         style={{
                           maskImage: `url(${service.iconSrc})`,
                           maskSize: "contain",
@@ -574,7 +574,7 @@ function Index() {
                   </Link>
                   <span
                     aria-hidden="true"
-                    className="absolute inset-x-0 bottom-0 h-1.5 bg-[#3C0B68]"
+                    className="absolute inset-x-0 bottom-0 h-1.5 bg-[#4C137F]"
                   />
                 </article>
               ))}
@@ -646,7 +646,7 @@ function Index() {
         {/* Reviews */}
         <section
           id="reviews"
-          className="relative scroll-mt-24 overflow-hidden border-b border-border bg-[#3C0B68]"
+          className="relative scroll-mt-24 overflow-hidden border-b border-border bg-[#4C137F]"
         >
           <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-24">
             <h2 className="section-heading text-white">Trusted by Philadelphia Customers</h2>
@@ -827,7 +827,7 @@ function Index() {
         </section>
 
         {/* Final CTA */}
-        <section className="relative overflow-hidden bg-[#3C0B68] py-16 sm:py-20">
+        <section className="relative overflow-hidden bg-[#4C137F] py-16 sm:py-20">
           <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6">
             <h2 className="font-display text-4xl font-extrabold text-white sm:text-5xl">
               Ready to Make Your Move?
@@ -839,7 +839,7 @@ function Index() {
               <Link
                 to="/contact"
                 aria-label="Check your moving rate"
-                className="inline-flex items-center justify-center rounded-lg bg-brand px-8 py-4 text-base font-bold tracking-wide text-white uppercase shadow-md shadow-brand/30 transition-all hover:opacity-90 active:scale-95 focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-[#3C0B68] focus-visible:outline-none"
+                className="inline-flex items-center justify-center rounded-lg bg-brand px-8 py-4 text-base font-bold tracking-wide text-white uppercase shadow-md shadow-brand/30 transition-all hover:opacity-90 active:scale-95 focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-[#4C137F] focus-visible:outline-none"
               >
                 Check Your Rate
               </Link>

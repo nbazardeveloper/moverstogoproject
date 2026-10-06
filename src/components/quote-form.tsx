@@ -174,7 +174,7 @@ export function QuoteForm() {
   if (step === 2) {
     return (
       <div className="relative left-1/2 w-screen max-w-none -translate-x-1/2 px-4 sm:px-6">
-        <div className="mx-auto max-w-4xl rounded-2xl bg-[#3C0B68] p-6 text-white shadow-2xl shadow-black/40 ring-1 ring-white/15 sm:p-10">
+        <div className="mx-auto max-w-4xl rounded-2xl bg-[#4C137F] p-6 text-white shadow-2xl shadow-black/40 ring-1 ring-white/15 sm:p-10">
           <div className="text-center">
             <h2 className="font-display text-4xl font-extrabold sm:text-5xl">
               Thanks, {form.full_name.split(" ")[0]}! 🎉
